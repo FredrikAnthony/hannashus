@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hanna's House — The Story of Hanna Lindh and Pensionat Granparken</title>
+<meta name="description" content="The first cohesive account of Hanna Lindh, the woman behind Pensionat Granparken in Norrtälje — based on previously unpublished memoirs and new research.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    /* Blueish archipelago palette */
+    --deep:        #0b2436;  /* deep sea / ink */
+    --navy:        #143850;
+    --sea:         #1f5b78;
+    --tide:        #2f7e9b;
+    --shallow:     #6fb3c4;
+    --mist:        #b9d7df;
+    --foam:        #e8f1f3;
+    --sand:        #f4efe6;
+    --paper:       #fbfaf6;
+    --gold:        #c8a24a;  /* warm brass accent */
+    --gold-soft:   #e0c789;
+    --ink:         #122733;
+    --ink-soft:    #43596a;
+
+    --serif: "Fraunces", Georgia, "Times New Roman", serif;
+    --sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+    --maxw: 1180px;
+    --gut: clamp(20px, 5vw, 64px);
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:var(--sans);
+    color:var(--ink);
+    background:var(--paper);
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,h4{font-family:var(--serif); font-weight:500; line-height:1.12; letter-spacing:-0.01em;}
+  a{color:inherit; text-decoration:none;}
+  img{max-width:100%; display:block;}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding-inline:var(--gut);}
+
+  /* ============ NAVIGATION (bleeds into hero) ============ */
+  header.nav{
+    position:fixed; top:0; left:0; right:0; z-index:50;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:18px var(--gut);
+    transition:background .4s ease, box-shadow .4s ease, padding .4s ease;
+  }
+  header.nav::before{
+    content:""; position:absolute; inset:0; z-index:-1;
+    background:linear-gradient(180deg, rgba(11,36,54,.55) 0%, rgba(11,36,54,.12) 60%, rgba(11,36,54,0) 100%);
+    transition:opacity .4s ease;
+  }
+  header.nav.solid{
+    background:rgba(251,250,246,.86);
+    backdrop-filter:saturate(140%) blur(12px);
+    -webkit-backdrop-filter:saturate(140%) blur(12px);
+    box-shadow:0 1px 0 rgba(18,39,51,.08);
+    padding-block:12px;
+  }
+  header.nav.solid::before{opacity:0;}
+  .brand{
+    display:flex; align-items:center; gap:12px;
+    font-family:var(--serif); font-size:1.15rem; letter-spacing:.02em;
+    color:#fff; transition:color .4s ease;
+  }
+  header.nav.solid .brand{color:var(--ink);}
+  .brand .mark{width:30px; height:30px; flex:0 0 auto;}
+  .navlinks{display:flex; align-items:center; gap:30px;}
+  .navlinks a{
+    font-size:.86rem; letter-spacing:.04em; color:rgba(255,255,255,.9);
+    transition:color .3s ease; position:relative;
+  }
+  .navlinks a:not(.btn):not(.lang a)::after{
+    content:""; position:absolute; left:0; bottom:-5px; height:1.5px; width:0;
+    background:var(--gold-soft); transition:width .3s ease;
+  }
+  .navlinks a:not(.btn):not(.lang a):hover::after{width:100%;}
+  header.nav.solid .navlinks a{color:var(--ink-soft);}
+  .navlinks a.btn{
+    border:1.5px solid rgba(255,255,255,.55); color:#fff;
+    padding:9px 18px; border-radius:40px; font-size:.82rem; letter-spacing:.05em;
+  }
+  .navlinks a.btn:hover{background:#fff; color:var(--deep); border-color:#fff;}
+  header.nav.solid .navlinks a.btn{border-color:var(--gold); color:var(--gold);}
+  header.nav.solid .navlinks a.btn:hover{background:var(--gold); color:#fff;}
+
+  /* language switcher */
+  .lang{display:flex; align-items:center; gap:2px; font-size:.8rem; letter-spacing:.06em;
+    border:1.5px solid rgba(255,255,255,.45); border-radius:30px; overflow:hidden;}
+  .lang a{padding:7px 13px; color:rgba(255,255,255,.85); transition:background .3s, color .3s;}
+  .lang a.active{background:rgba(255,255,255,.9); color:var(--deep); font-weight:600;}
+  .lang a:not(.active):hover{background:rgba(255,255,255,.15);}
+  header.nav.solid .lang{border-color:var(--mist);}
+  header.nav.solid .lang a{color:var(--ink-soft);}
+  header.nav.solid .lang a.active{background:var(--gold); color:#fff;}
+
+  .menu-toggle{display:none; background:none; border:0; cursor:pointer; padding:6px;}
+  .menu-toggle span{display:block; width:26px; height:2px; background:#fff; margin:5px 0; transition:.3s;}
+  header.nav.solid .menu-toggle span{background:var(--ink);}
+
+  /* ============ HERO ============ */
+  .hero{
+    position:relative; min-height:100vh; display:flex; align-items:center;
+    color:#fff; overflow:hidden;
+    background:linear-gradient(180deg, #5b93b0 0%, #336d8c 30%, #1d5070 55%, #123c56 100%);
+  }
+  .hero .scene{position:absolute; inset:0; width:100%; height:100%; z-index:0;}
+  .hero .scene img,
+  .hero .scene svg{width:100%; height:100%; object-fit:cover; object-position:center 35%;}
+  .hero .veil{
+    position:absolute; inset:0; z-index:1;
+    background:
+      linear-gradient(90deg, rgba(8,28,42,.78) 0%, rgba(8,28,42,.45) 38%, rgba(8,28,42,.12) 70%, rgba(8,28,42,.05) 100%),
+      linear-gradient(180deg, rgba(11,36,54,.55) 0%, rgba(11,36,54,.10) 35%, rgba(11,36,54,.20) 70%, rgba(18,40,53,.65) 100%);
+  }
+  .hero .wrap{position:relative; z-index:2; width:100%; padding-top:96px;}
+  .hero .eyebrow{
+    font-family:var(--sans); font-size:.78rem; letter-spacing:.32em; text-transform:uppercase;
+    color:var(--gold-soft); margin-bottom:22px;
+  }
+  .hero h1{
+    font-size:clamp(3.2rem, 9vw, 7rem); font-weight:500; letter-spacing:-0.02em;
+    text-shadow:0 2px 40px rgba(7,24,36,.4);
+  }
+  .hero h1 em{font-style:italic; color:var(--gold-soft);}
+  .hero .lead{
+    font-family:var(--serif); font-size:clamp(1.15rem,2.4vw,1.6rem); font-style:italic;
+    font-weight:400; max-width:34ch; margin:24px 0 8px; color:rgba(255,255,255,.94);
+  }
+  .hero .sub{font-size:1rem; max-width:48ch; color:rgba(233,241,243,.85); margin-bottom:38px;}
+  .hero-cta{display:flex; flex-wrap:wrap; gap:14px;}
+  .btn-primary,.btn-ghost{
+    display:inline-flex; align-items:center; gap:9px;
+    padding:14px 28px; border-radius:44px; font-size:.92rem; letter-spacing:.03em; font-weight:500;
+    transition:transform .25s ease, box-shadow .25s ease, background .25s ease, color .25s ease;
+  }
+  .btn-primary{background:var(--gold); color:#fff; box-shadow:0 14px 34px -12px rgba(200,162,74,.7);}
+  .btn-primary:hover{transform:translateY(-2px); box-shadow:0 20px 40px -12px rgba(200,162,74,.8);}
+  .btn-ghost{border:1.5px solid rgba(255,255,255,.5); color:#fff;}
+  .btn-ghost:hover{background:rgba(255,255,255,.12); border-color:#fff;}
+  .scroll-hint{
+    position:absolute; bottom:26px; left:50%; transform:translateX(-50%); z-index:2;
+    color:rgba(255,255,255,.7); font-size:.72rem; letter-spacing:.25em; text-transform:uppercase;
+    display:flex; flex-direction:column; align-items:center; gap:8px;
+  }
+  .scroll-hint .line{width:1px; height:34px; background:linear-gradient(rgba(255,255,255,.7), transparent); animation:drip 2.2s infinite;}
+  @keyframes drip{0%{opacity:.2; transform:scaleY(.3); transform-origin:top;}50%{opacity:1;}100%{opacity:.2; transform:scaleY(1); transform-origin:top;}}
+
+  /* ============ GENERIC SECTION ============ */
+  section{padding-block:clamp(70px,10vw,120px);}
+  .kicker{
+    font-size:.74rem; letter-spacing:.28em; text-transform:uppercase; color:var(--tide);
+    font-weight:600; margin-bottom:18px; display:flex; align-items:center; gap:12px;
+  }
+  .kicker::before{content:""; width:30px; height:1.5px; background:var(--gold);}
+  h2.section-title{font-size:clamp(2rem,4.4vw,3.1rem); color:var(--deep); margin-bottom:8px;}
+  .section-title + .dek{font-size:1.12rem; color:var(--ink-soft); max-width:60ch; margin-top:18px;}
+  .grid2{display:grid; grid-template-columns:1fr 1fr; gap:clamp(36px,6vw,80px); align-items:center;}
+
+  .intro{background:linear-gradient(180deg,var(--paper), var(--foam)); position:relative;}
+  .intro p.big{font-family:var(--serif); font-size:clamp(1.4rem,3vw,2.1rem); font-weight:400; line-height:1.4; color:var(--navy); max-width:24ch;}
+  .intro p.body{font-size:1.08rem; color:var(--ink-soft); margin-top:18px;}
+  .intro .pullquote{margin-top:30px; padding-left:22px; border-left:3px solid var(--gold); font-family:var(--serif); font-style:italic; font-size:1.15rem; color:var(--sea);}
+
+  .book{background:var(--deep); color:var(--foam); position:relative; overflow:hidden;}
+  .book::after{content:""; position:absolute; inset:0; background:radial-gradient(120% 80% at 80% 0%, rgba(47,126,155,.35), transparent 60%); pointer-events:none;}
+  .book .wrap{position:relative; z-index:1;}
+  .book h2.section-title{color:#fff;}
+  .book .kicker{color:var(--shallow);}
+  .cover{
+    aspect-ratio:3/4.2; border-radius:6px; position:relative;
+    background:linear-gradient(160deg,#1c4a64,#0c2a3d);
+    box-shadow:0 40px 80px -30px rgba(0,0,0,.7), inset 0 0 0 1px rgba(255,255,255,.06);
+    display:flex; flex-direction:column; justify-content:space-between; padding:38px 32px;
+    transform:rotate(-2deg); transition:transform .5s ease;
+  }
+  .cover:hover{transform:rotate(0deg) translateY(-6px);}
+  .cover::before{content:""; position:absolute; left:14px; top:0; bottom:0; width:2px; background:linear-gradient(rgba(255,255,255,.18),transparent);}
+  .cover .c-top{font-size:.7rem; letter-spacing:.3em; text-transform:uppercase; color:var(--gold-soft);}
+  .cover h3{font-size:2.4rem; color:#fff; line-height:1;}
+  .cover h3 em{display:block; font-style:italic; color:var(--gold-soft); font-size:1.2rem; margin-top:10px; letter-spacing:.02em;}
+  .cover .c-isle{position:absolute; left:0; right:0; bottom:34%; opacity:.5;}
+  .cover .c-foot{font-size:.78rem; letter-spacing:.12em; color:rgba(233,241,243,.7);}
+  .book .booklist{list-style:none; columns:2; gap:14px; margin:24px 0 30px;}
+  .book .booklist li{padding:7px 0 7px 24px; position:relative; color:var(--mist); break-inside:avoid;}
+  .book .booklist li::before{content:""; position:absolute; left:0; top:14px; width:10px; height:10px; border-radius:50%; border:1.5px solid var(--gold-soft);}
+  .book .note{font-size:.95rem; color:rgba(185,215,223,.8); border-top:1px solid rgba(255,255,255,.12); padding-top:20px;}
+
+  .portrait-frame{position:relative; border-radius:8px; overflow:hidden; aspect-ratio:4/5; background:linear-gradient(160deg,#cfe1e6,#9bbfc9); box-shadow:0 30px 60px -28px rgba(18,40,53,.5);}
+  .portrait-frame .placeholder{position:absolute; inset:0; display:flex; align-items:flex-end; justify-content:center; color:var(--navy);}
+  .portrait-frame figcaption{position:absolute; left:0; right:0; bottom:0; padding:20px; background:linear-gradient(transparent, rgba(11,36,54,.8)); color:#fff; font-size:.85rem; letter-spacing:.04em;}
+  .tags{display:flex; flex-wrap:wrap; gap:10px; margin:6px 0 22px;}
+  .tags span{font-size:.82rem; letter-spacing:.04em; padding:6px 14px; border-radius:30px; background:var(--foam); color:var(--sea); border:1px solid var(--mist);}
+  .lead-para{font-size:1.12rem; color:var(--ink-soft); margin-bottom:16px;}
+
+  .granparken{background:linear-gradient(180deg,var(--foam),var(--paper));}
+  .timeline{margin-top:54px; position:relative;}
+  .timeline::before{content:""; position:absolute; left:0; right:0; top:38px; height:2px; background:linear-gradient(90deg,var(--mist),var(--tide),var(--mist));}
+  .tl-track{display:grid; grid-template-columns:repeat(5,1fr); gap:18px;}
+  .tl-item{position:relative; padding-top:64px; text-align:center;}
+  .tl-item .dot{position:absolute; top:30px; left:50%; transform:translateX(-50%); width:18px; height:18px; border-radius:50%; background:var(--paper); border:3px solid var(--tide); box-shadow:0 0 0 5px rgba(47,126,155,.12);}
+  .tl-item.hl .dot{background:var(--gold); border-color:var(--gold); box-shadow:0 0 0 5px rgba(200,162,74,.18);}
+  .tl-item .yr{font-family:var(--serif); font-size:1.4rem; color:var(--deep); font-weight:500;}
+  .tl-item p{font-size:.92rem; color:var(--ink-soft); margin-top:6px;}
+
+  .perspectives{background:var(--navy); color:var(--foam); position:relative; overflow:hidden;}
+  .perspectives::before{content:""; position:absolute; inset:0; background:radial-gradient(100% 100% at 0% 100%, rgba(47,126,155,.4), transparent 55%);}
+  .perspectives .wrap{position:relative; z-index:1;}
+  .perspectives .kicker{color:var(--gold-soft);}
+  .perspectives h2.section-title{color:#fff; max-width:20ch;}
+  .perspectives .dek{color:rgba(233,241,243,.85);}
+  .claim-cards{display:grid; grid-template-columns:repeat(4,1fr); gap:18px; margin-top:48px;}
+  .claim{background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.12); border-radius:12px; padding:26px 22px; transition:transform .3s ease, background .3s ease;}
+  .claim:hover{transform:translateY(-5px); background:rgba(255,255,255,.09);}
+  .claim h4{font-size:.78rem; letter-spacing:.18em; text-transform:uppercase; color:var(--gold-soft); margin-bottom:14px; font-family:var(--sans); font-weight:600;}
+  .claim p{font-size:.98rem; color:var(--mist);}
+  .claim .big-year{font-family:var(--serif); font-size:2rem; color:#fff; display:block; margin-bottom:6px;}
+
+  .memoir{background:var(--deep); color:#fff; text-align:center;}
+  .memoir blockquote{font-family:var(--serif); font-style:italic; font-weight:400; font-size:clamp(1.5rem,3.6vw,2.6rem); line-height:1.4; max-width:26ch; margin:0 auto;}
+  .memoir .mark{font-size:4rem; color:var(--gold-soft); line-height:0; display:block; height:30px;}
+  .memoir cite{display:block; margin-top:30px; font-style:normal; font-family:var(--sans); font-size:.85rem; letter-spacing:.18em; text-transform:uppercase; color:var(--shallow);}
+
+  .gallery-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:46px;}
+  .gallery-grid figure{position:relative; border-radius:10px; overflow:hidden; aspect-ratio:1; cursor:pointer; background:linear-gradient(160deg,#bcd5dc,#7ba6b4); box-shadow:0 14px 30px -18px rgba(18,40,53,.4);}
+  .gallery-grid figure:nth-child(4n){aspect-ratio:1/1.3;}
+  .gallery-grid figcaption{position:absolute; inset:0; display:flex; flex-direction:column; justify-content:flex-end; padding:18px; color:#fff; opacity:0; transition:opacity .35s ease; background:linear-gradient(transparent 40%, rgba(11,36,54,.85));}
+  .gallery-grid figure:hover figcaption{opacity:1;}
+  .gallery-grid figcaption strong{font-family:var(--serif); font-size:1.05rem; font-weight:500;}
+  .gallery-grid figcaption span{font-size:.82rem; color:var(--mist);}
+  .gallery-grid .ph-label{position:absolute; inset:0; display:flex; align-items:center; justify-content:center; color:rgba(20,56,80,.45); font-family:var(--serif); font-style:italic; font-size:.95rem; transition:opacity .35s;}
+  .gallery-grid figure:hover .ph-label{opacity:0;}
+
+  .author{background:linear-gradient(180deg,var(--foam),var(--paper));}
+  .author-photo{aspect-ratio:1; border-radius:50%; max-width:300px; margin-inline:auto; background:linear-gradient(160deg,#cfe1e6,#9bbfc9); box-shadow:0 24px 50px -24px rgba(18,40,53,.5); position:relative; overflow:hidden;}
+  .author-photo .ph{position:absolute; inset:0; display:flex; align-items:center; justify-content:center; color:var(--navy); font-family:var(--serif); font-style:italic;}
+
+  .talks{background:var(--sea); color:#fff; position:relative; overflow:hidden;}
+  .talks::after{content:""; position:absolute; right:-10%; top:-30%; width:60%; height:160%; background:radial-gradient(circle, rgba(255,255,255,.1), transparent 65%);}
+  .talks .wrap{position:relative; z-index:1;}
+  .talks h2.section-title{color:#fff;}
+  .talk-list{list-style:none; margin:30px 0; display:grid; grid-template-columns:1fr 1fr; gap:14px 30px;}
+  .talk-list li{padding:14px 0; border-bottom:1px solid rgba(255,255,255,.18); font-size:1.05rem; display:flex; align-items:center; gap:14px;}
+  .talk-list li::before{content:"›"; color:var(--gold-soft); font-size:1.3rem;}
+
+  .press-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:18px; margin-top:42px;}
+  .press-card{background:#fff; border:1px solid var(--mist); border-radius:12px; padding:28px 24px; transition:transform .3s ease, box-shadow .3s ease;}
+  .press-card:hover{transform:translateY(-4px); box-shadow:0 20px 40px -22px rgba(18,40,53,.3);}
+  .press-card .src{font-family:var(--serif); font-size:1.2rem; color:var(--deep); margin-bottom:8px;}
+  .press-card p{font-size:.92rem; color:var(--ink-soft);}
+
+  .keymsg{background:var(--deep); color:#fff; text-align:center; position:relative; overflow:hidden;}
+  .keymsg .scene2{position:absolute; inset:0; opacity:.25;}
+  .keymsg .wrap{position:relative; z-index:1;}
+  .keymsg p{font-family:var(--serif); font-size:clamp(1.5rem,3.4vw,2.4rem); font-weight:400; line-height:1.4; max-width:32ch; margin:0 auto; font-style:italic;}
+  .keymsg p strong{color:var(--gold-soft); font-weight:500; font-style:normal;}
+  .keymsg .btn-primary{margin-top:40px;}
+
+  footer.site{background:#081d2c; color:var(--mist); padding-block:70px 40px;}
+  .foot-grid{display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:40px;}
+  footer.site h4{color:#fff; font-size:1.05rem; margin-bottom:18px; letter-spacing:.02em;}
+  footer.site .brand-foot{font-family:var(--serif); font-size:1.6rem; color:#fff; margin-bottom:12px;}
+  footer.site p, footer.site li{font-size:.92rem; color:rgba(185,215,223,.8);}
+  footer.site ul{list-style:none;}
+  footer.site ul li{padding:5px 0;}
+  footer.site a:hover{color:var(--gold-soft);}
+  .foot-bottom{border-top:1px solid rgba(255,255,255,.1); margin-top:50px; padding-top:24px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px; font-size:.82rem; color:rgba(185,215,223,.6);}
+
+  .reveal{opacity:0; transform:translateY(26px); transition:opacity .8s ease, transform .8s ease;}
+  .reveal.in{opacity:1; transform:none;}
+
+  @media (max-width:900px){
+    .grid2{grid-template-columns:1fr; gap:40px;}
+    .claim-cards{grid-template-columns:1fr 1fr;}
+    .press-grid{grid-template-columns:1fr 1fr;}
+    .gallery-grid{grid-template-columns:1fr 1fr;}
+    .tl-track{grid-template-columns:1fr 1fr; gap:30px;}
+    .timeline::before{display:none;}
+    .talk-list{grid-template-columns:1fr;}
+    .foot-grid{grid-template-columns:1fr 1fr;}
+    .book .booklist{columns:1;}
+    .navlinks{
+      position:fixed; inset:0 0 0 auto; width:min(78vw,320px);
+      background:var(--deep); flex-direction:column; align-items:flex-start; justify-content:center;
+      padding:40px; gap:22px; transform:translateX(100%); transition:transform .4s ease;
+    }
+    .navlinks.open{transform:none;}
+    .navlinks a{color:#fff !important; font-size:1.05rem;}
+    .navlinks .lang{align-self:flex-start;}
+    .navlinks .lang a{font-size:.9rem !important;}
+    .navlinks .lang a.active{color:var(--deep) !important;}
+    .menu-toggle{display:block; z-index:60;}
+  }
+  @media (max-width:560px){
+    .claim-cards,.press-grid,.gallery-grid,.foot-grid,.tl-track{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<header class="nav" id="nav">
+  <a class="brand" href="#top">
+    <svg class="mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="20" cy="20" r="19" stroke="currentColor" stroke-width="1.2" opacity=".5"/>
+      <path d="M8 26c3-1 4 1 7 0s4-2 7-1 4 1 7-1" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+      <path d="M8 30c3-1 4 1 7 0s4-2 7-1 4 1 7-1" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" opacity=".6"/>
+      <path d="M22 9l4 9h-8l4-9z" fill="currentColor" opacity=".85"/>
+      <rect x="18" y="18" width="8" height="6" fill="currentColor" opacity=".85"/>
+    </svg>
+    Hanna's&nbsp;House
+  </a>
+  <button class="menu-toggle" id="menuToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+  <nav class="navlinks" id="navlinks">
+    <a href="#boken">The Book</a>
+    <a href="#hanna">Hanna Lindh</a>
+    <a href="#granparken">Granparken</a>
+    <a href="#perspektiv">New Research</a>
+    <a href="#foredrag">Talks</a>
+    <a href="#kontakt">Contact</a>
+    <a href="#boken" class="btn">Buy the Book</a>
+    <span class="lang"><a href="../index.html">SV</a><a href="index.html" class="active">EN</a></span>
+  </nav>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="top">
+  <div class="scene" aria-hidden="true">
+    <img src="../assets/omradessida_centrala-norrtalje-scaled-e1648029974817-2048x1469-1.jpg" alt="Central Norrtälje">
+  </div>
+  <div class="veil"></div>
+  <div class="wrap">
+    <p class="eyebrow">Norrtälje · Pensionat Granparken</p>
+    <h1>Hanna's&nbsp;<em>House</em></h1>
+    <p class="lead">The story of Hanna Lindh and Pensionat Granparken.</p>
+    <p class="sub">One woman. One guesthouse. A forgotten chapter of Norrtälje's history — retold through memoirs, archives and new research.</p>
+    <div class="hero-cta">
+      <a href="#boken" class="btn-primary">Buy the book →</a>
+      <a href="#hanna" class="btn-ghost">About Hanna Lindh</a>
+      <a href="#foredrag" class="btn-ghost">Book a talk</a>
+    </div>
+  </div>
+  <div class="scroll-hint"><span>Scroll</span><span class="line"></span></div>
+</section>
+
+<!-- ============ INTRO ============ -->
+<section class="intro" id="intro">
+  <div class="wrap grid2">
+    <div class="reveal">
+      <p class="kicker">Introduction</p>
+      <p class="big">Who was Hanna Lindh?</p>
+    </div>
+    <div class="reveal">
+      <p class="body">In 1886, Hanna Lindh and her family had Pensionat Granparken built above Societetsparken in Norrtälje. The guesthouse became part of the town's emergence as a seaside resort and summer destination. But who was the woman behind it all? And why has her story almost been forgotten?</p>
+      <p class="pullquote">Hanna's House is the story of a person, a house, and a Norrtälje in transformation.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ THE BOOK ============ -->
+<section class="book" id="boken">
+  <div class="wrap grid2">
+    <div class="reveal">
+      <div class="cover">
+        <div class="c-top">Fredrik Anthony</div>
+        <svg class="c-isle" viewBox="0 0 300 60" xmlns="http://www.w3.org/2000/svg" fill="none">
+          <path d="M0 40 Q 60 22 130 34 T 300 32" stroke="#e0c789" stroke-width="1.5" opacity=".5"/>
+          <path d="M40 34 q 30 -20 70 -12 q 40 -14 90 0 q 40 6 60 18z" fill="#e0c789" opacity=".25"/>
+        </svg>
+        <div><h3>Hanna's House<em>the woman behind Pensionat Granparken</em></h3></div>
+        <div class="c-foot">Norrtälje · History · Heritage</div>
+      </div>
+    </div>
+    <div class="reveal">
+      <p class="kicker">The Book</p>
+      <h2 class="section-title">A story of people and a town</h2>
+      <ul class="booklist">
+        <li>Hanna Lindh</li>
+        <li>Pensionat Granparken</li>
+        <li>The Salvation Army</li>
+        <li>Norrtälje as a seaside resort</li>
+        <li>The Lindh family</li>
+        <li>Memories, history and heritage</li>
+      </ul>
+      <p class="note">The book draws on archival material, photographs, newspaper sources and Ernst Lindh's previously unpublished memoirs.</p>
+      <div style="margin-top:28px"><a href="#kontakt" class="btn-primary">Buy the book →</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HANNA ============ -->
+<section id="hanna">
+  <div class="wrap grid2">
+    <figure class="portrait-frame reveal">
+      <div class="placeholder">
+        <svg width="100%" viewBox="0 0 320 400" xmlns="http://www.w3.org/2000/svg">
+          <rect width="320" height="400" fill="none"/>
+          <circle cx="160" cy="150" r="60" fill="#143850" opacity=".25"/>
+          <path d="M70 400 q 0 -120 90 -120 q 90 0 90 120z" fill="#143850" opacity=".25"/>
+        </svg>
+      </div>
+      <figcaption>Hanna Lindh — guesthouse owner and pioneer.</figcaption>
+    </figure>
+    <div class="reveal">
+      <p class="kicker">The woman behind the house</p>
+      <h2 class="section-title">Hanna Lindh</h2>
+      <div class="tags"><span>Entrepreneur</span><span>Guesthouse owner</span><span>Pioneer</span></div>
+      <p class="lead-para">As Norrtälje rose as a seaside resort, Hanna Lindh built a business that would welcome generations of summer guests.</p>
+      <p style="color:var(--ink-soft)">But her story is about more than a guesthouse. It is about faith, work, family, and a society in change.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GRANPARKEN + TIMELINE ============ -->
+<section class="granparken" id="granparken">
+  <div class="wrap">
+    <div class="reveal" style="max-width:62ch">
+      <p class="kicker">Pensionat Granparken</p>
+      <h2 class="section-title">A guesthouse from 1886</h2>
+      <p class="dek">Pensionat Granparken was built during Norrtälje's golden age as a spa town. Its position above Societetsparken made the guesthouse a natural part of the bathing guests' lives. The name came from Granparken — the landscaped park where visitors strolled for their health.</p>
+    </div>
+    <div class="timeline reveal">
+      <div class="tl-track">
+        <div class="tl-item"><span class="dot"></span><span class="yr">1886</span><p>The guesthouse is built</p></div>
+        <div class="tl-item"><span class="dot"></span><span class="yr">1890s</span><p>Norrtälje flourishes as a spa town</p></div>
+        <div class="tl-item"><span class="dot"></span><span class="yr">1940s</span><p>Used during the wartime readiness years</p></div>
+        <div class="tl-item"><span class="dot"></span><span class="yr">1980s</span><p>Restoration and preservation</p></div>
+        <div class="tl-item hl"><span class="dot"></span><span class="yr">Today</span><p>The guesthouse lives on</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ NEW PERSPECTIVES ============ -->
+<section class="perspectives" id="perspektiv">
+  <div class="wrap">
+    <div class="reveal" style="max-width:70ch">
+      <p class="kicker">New Research</p>
+      <h2 class="section-title">When did the story of Granparken really begin?</h2>
+      <p class="dek">Many accounts give 1886 as the starting year. But through a study of contemporary sources, property records, family documents and Ernst Lindh's memoirs, a more complex history emerges. <strong style="color:var(--gold-soft)">Hanna's House presents new research suggesting the building was raised as early as between 1879 and 1881.</strong></p>
+    </div>
+    <div class="claim-cards">
+      <div class="claim reveal"><h4>Earlier accounts</h4><span class="big-year">1886</span><p>The year usually cited for the guesthouse's construction in established descriptions.</p></div>
+      <div class="claim reveal"><h4>What the sources show</h4><span class="big-year">1879–81</span><p>Memoirs, property records and photographs point to an earlier origin.</p></div>
+      <div class="claim reveal"><h4>What is certain</h4><p>The Lindh family's connection to the building and its role in Norrtälje's resort life.</p></div>
+      <div class="claim reveal"><h4>What is likely</h4><p>That Granparken's history can be pushed several years back in time — a genuine historical contribution.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MEMOIR ============ -->
+<section class="memoir">
+  <div class="wrap reveal">
+    <span class="mark">“</span>
+    <blockquote>I stood before the guesthouse and tried to separate what I knew from what I had only been told.</blockquote>
+    <cite>From the memoirs of Ernst Lindh</cite>
+  </div>
+</section>
+
+<!-- ============ GALLERY ============ -->
+<section id="bildarkiv">
+  <div class="wrap">
+    <div class="reveal" style="max-width:60ch">
+      <p class="kicker">Image Archive</p>
+      <h2 class="section-title">Images from a forgotten history</h2>
+      <p class="dek">Each image can be opened with a short story.</p>
+    </div>
+    <div class="gallery-grid reveal">
+      <figure><span class="ph-label">Hanna Lindh</span><figcaption><strong>Hanna Lindh</strong><span>Founder of the guesthouse</span></figcaption></figure>
+      <figure><span class="ph-label">Ernst Lindh</span><figcaption><strong>Ernst Lindh</strong><span>The voice of the memoirs</span></figcaption></figure>
+      <figure><span class="ph-label">Granparken</span><figcaption><strong>Granparken</strong><span>The guesthouse around 1900</span></figcaption></figure>
+      <figure><span class="ph-label">Old Norrtälje</span><figcaption><strong>Old Norrtälje</strong><span>The town as a seaside resort</span></figcaption></figure>
+      <figure><span class="ph-label">Societetsparken</span><figcaption><strong>Societetsparken</strong><span>The guests' promenade</span></figcaption></figure>
+      <figure><span class="ph-label">Family photos</span><figcaption><strong>The Lindh family</strong><span>From the family album</span></figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ AUTHOR ============ -->
+<section class="author" id="forfattare">
+  <div class="wrap grid2">
+    <div class="author-photo reveal"><div class="ph">Photo: Fredrik Anthony</div></div>
+    <div class="reveal">
+      <p class="kicker">About the author</p>
+      <h2 class="section-title">Fredrik Anthony</h2>
+      <p class="lead-para">Fredrik Anthony grew up in Norrtälje and has worked for many years with art, cultural history and antiques.</p>
+      <p style="color:var(--ink-soft)">Through Ernst Lindh's memoirs and his own research, he has rediscovered the story of Hanna Lindh and Pensionat Granparken — the first cohesive portrait of the woman behind the house.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TALKS ============ -->
+<section class="talks" id="foredrag">
+  <div class="wrap reveal">
+    <p class="kicker" style="color:var(--gold-soft)">Talks</p>
+    <h2 class="section-title">Book a talk</h2>
+    <p class="dek" style="color:rgba(233,241,243,.9); max-width:55ch">Talks for libraries, societies and heritage gatherings — about the people, the house and the town.</p>
+    <ul class="talk-list">
+      <li>Hanna Lindh</li>
+      <li>Pensionat Granparken</li>
+      <li>Norrtälje as a seaside resort</li>
+      <li>The memoirs of Ernst Lindh</li>
+      <li>Local history and cultural heritage</li>
+      <li>New research on Granparken's origins</li>
+    </ul>
+    <a href="#kontakt" class="btn-primary" style="background:#fff; color:var(--sea)">Book a talk →</a>
+  </div>
+</section>
+
+<!-- ============ PRESS ============ -->
+<section id="press">
+  <div class="wrap">
+    <div class="reveal" style="max-width:60ch">
+      <p class="kicker">Press</p>
+      <h2 class="section-title">In the media</h2>
+      <p class="dek">New research may push Granparken's history several years back in time.</p>
+    </div>
+    <div class="press-grid reveal">
+      <div class="press-card"><div class="src">Norrtelje Tidning</div><p>Local coverage of the book and the research.</p></div>
+      <div class="press-card"><div class="src">Library events</div><p>Author talks and book launches.</p></div>
+      <div class="press-card"><div class="src">Society talks</div><p>Heritage and cultural associations.</p></div>
+      <div class="press-card"><div class="src">Reviews</div><p>Voices on Hanna's House.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ KEY MESSAGE ============ -->
+<section class="keymsg">
+  <div class="scene2" aria-hidden="true">
+    <svg width="100%" height="100%" viewBox="0 0 1440 400" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0 240 Q 240 200 480 230 T 960 224 T 1440 236 L1440 400 L0 400Z" fill="#1f5b78" opacity=".5"/>
+      <path d="M0 300 Q 300 270 600 295 T 1200 288 T 1440 300 L1440 400 L0 400Z" fill="#2f7e9b" opacity=".4"/>
+    </svg>
+  </div>
+  <div class="wrap reveal">
+    <p><strong>Hanna Lindh built Pensionat Granparken.</strong> This book tells the story of the woman behind the house — and of Norrtälje during a decisive period in the town's development.</p>
+    <a href="#kontakt" class="btn-primary">Buy the book →</a>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site" id="kontakt">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="brand-foot">Hanna's House</div>
+        <p>The first cohesive account of the woman behind Pensionat Granparken — based on previously unpublished memoirs and new research.</p>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:info@hannashus.se">Email</a></li>
+          <li><a href="#foredrag">Book a talk</a></li>
+          <li><a href="#boken">Buy the book</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Follow the project</h4>
+        <ul>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">Facebook</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>In collaboration with</h4>
+        <ul>
+          <li>Pensionat Granparken</li>
+          <li>Norrtälje Library</li>
+          <li>Heritage societies</li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Hanna's House · Fredrik Anthony</span>
+      <span>Norrtälje · Pensionat Granparken</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  const onScroll = () => nav.classList.toggle('solid', window.scrollY > 80);
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  const toggle = document.getElementById('menuToggle');
+  const links = document.getElementById('navlinks');
+  toggle.addEventListener('click', () => links.classList.toggle('open'));
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold:0.12});
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
