@@ -199,6 +199,25 @@
   .book .booklist li::before{content:""; position:absolute; left:0; top:14px; width:10px; height:10px; border-radius:50%; border:1.5px solid var(--gold-soft);}
   .book .note{font-size:.95rem; color:rgba(185,215,223,.8); border-top:1px solid rgba(255,255,255,.12); padding-top:20px;}
 
+  .story-images{background:linear-gradient(180deg,var(--paper),var(--foam));}
+  .story-images .section-title{max-width:18ch;}
+  .story-image-grid{display:grid; grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr); gap:clamp(20px,4vw,42px); margin-top:46px;}
+  .story-card{overflow:hidden; border-radius:16px; background:#fff; border:1px solid var(--mist); box-shadow:0 24px 52px -34px rgba(18,40,53,.55);}
+  .story-photo{height:clamp(330px,38vw,470px); overflow:hidden; background:#e9e1d2;}
+  .story-photo img{display:block; height:100%; object-fit:cover;}
+  .story-photo.family img{width:106%; max-width:none; object-position:left center;}
+  .story-photo.flag img{width:200%; max-width:none; object-position:left center;}
+  .story-copy{padding:24px 26px 28px;}
+  .story-copy h3{font-family:var(--serif); font-size:1.55rem; color:var(--deep); margin-bottom:8px;}
+  .story-copy p{color:var(--ink-soft);}
+  .story-card--quote{display:grid; grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr); align-items:stretch;}
+  .story-card--quote .story-photo{height:auto; aspect-ratio:1.05; align-self:center; margin:24px 0 24px 24px; border-radius:10px;}
+  .story-quote{display:flex; flex-direction:column; justify-content:center; padding:30px clamp(24px,3vw,38px); color:var(--ink-soft);}
+  .story-quote h3{font-family:var(--serif); font-size:1.55rem; color:var(--deep); margin-bottom:16px;}
+  .story-quote blockquote{font-family:var(--serif); font-size:.96rem; line-height:1.62; color:var(--sea);}
+  .story-quote blockquote p + p{margin-top:14px;}
+  .story-quote cite{margin-top:16px; font-size:.72rem; font-style:normal; letter-spacing:.14em; text-transform:uppercase; color:var(--gold);}
+
   .portrait-frame{position:relative; border-radius:8px; overflow:hidden; aspect-ratio:4/5; background:linear-gradient(160deg,#cfe1e6,#9bbfc9); box-shadow:0 30px 60px -28px rgba(18,40,53,.5);}
   .portrait-frame .placeholder{position:absolute; inset:0; display:flex; align-items:flex-end; justify-content:center; color:var(--navy);}
   .portrait-frame figcaption{position:absolute; left:0; right:0; bottom:0; padding:20px; background:linear-gradient(transparent, rgba(11,36,54,.8)); color:#fff; font-size:.85rem; letter-spacing:.04em;}
@@ -284,6 +303,10 @@
 
   @media (max-width:900px){
     .grid2{grid-template-columns:1fr; gap:40px;}
+    .story-image-grid{grid-template-columns:1fr;}
+    .story-photo{height:min(110vw,520px);}
+    .story-card--quote{grid-template-columns:1fr;}
+    .story-card--quote .story-photo{height:auto; margin:20px 20px 0;}
     .claim-cards{grid-template-columns:1fr 1fr;}
     .press-grid{grid-template-columns:1fr 1fr;}
     .gallery-grid{grid-template-columns:1fr 1fr;}
@@ -401,6 +424,31 @@
       </ul>
       <p class="note">The book draws on archival material, photographs, newspaper sources and Ernst Lindh's previously unpublished memoirs.</p>
       <div style="margin-top:28px"><a href="#kontakt" class="btn-primary">Buy the book →</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ IMAGES FROM THE STORY ============ -->
+<section class="story-images" id="the-story-in-images">
+  <div class="wrap">
+    <p class="kicker">From the story</p>
+    <h2 class="section-title">Family, faith and their time</h2>
+    <div class="story-image-grid">
+      <article class="story-card reveal">
+        <figure class="story-photo family"><img src="../familjenlindh.jpeg" alt="Historical family portrait of the Lindh family" loading="lazy"></figure>
+        <div class="story-copy"><h3>The Lindh family</h3><p>A family portrait from the story of Hanna Lindh and the people surrounding Pensionat Granparken.</p></div>
+      </article>
+      <article class="story-card story-card--quote reveal">
+        <figure class="story-photo flag"><img src="../blodocheld.jpeg" alt="Salvation Army banner bearing the words Blood and Fire" loading="lazy"></figure>
+        <div class="story-quote">
+          <h3>Blood and fire</h3>
+          <blockquote>
+            <p>“I have come to set fire to the earth,<br>and how I wish it were already kindled.”</p>
+            <p>Blood and Fire is our watchword in the battle …<br>Blood and Fire, our old watchword still holds …<br>With the Blood and Fire banner at the fore<br>we advance into the holy war …<br>Fire-baptized fighters! Salvation Army!<br>Forward to conquer a world with blood and with fire …<br>Good Saviour, good Saviour, baptize us in fire and blood!</p>
+          </blockquote>
+          <cite>From the page “New worlds”</cite>
+        </div>
+      </article>
     </div>
   </div>
 </section>
