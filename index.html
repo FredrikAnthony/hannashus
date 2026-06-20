@@ -159,6 +159,11 @@
   .scroll-hint .line{width:1px; height:34px; background:linear-gradient(rgba(255,255,255,.7), transparent); animation:drip 2.2s infinite;}
   @keyframes drip{0%{opacity:.2; transform:scaleY(.3); transform-origin:top;}50%{opacity:1;}100%{opacity:.2; transform:scaleY(1); transform-origin:top;}}
 
+  /* HISTORICAL HOUSE PHOTO */
+  .house-feature{padding-block:clamp(34px,6vw,72px); background:linear-gradient(180deg,var(--paper),var(--foam));}
+  .house-feature figure{max-width:1080px; margin:0 auto; border-radius:14px; overflow:hidden; background:#d4bd8e; box-shadow:0 24px 55px -28px rgba(18,40,53,.48);}
+  .house-feature img{display:block; width:100%; height:auto;}
+
   /* ============ GENERIC SECTION ============ */
   section{padding-block:clamp(70px,10vw,120px);}
   .kicker{
@@ -402,6 +407,13 @@
     </div>
   </div>
   <div class="scroll-hint"><span>Scrolla</span><span class="line"></span></div>
+</section>
+
+<!-- ============ HISTORISKT HUS ============ -->
+<section class="house-feature" aria-label="Historiskt fotografi av Pensionat Granparken">
+  <div class="wrap">
+    <figure><img src="pictureofhouse.png" alt="Historiskt fotografi av Pensionat Granparken med människor framför huset"></figure>
+  </div>
 </section>
 
 <!-- ============ INTRO ============ -->
