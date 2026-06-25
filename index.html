@@ -104,8 +104,11 @@
   header.nav.solid .lang{border-color:var(--mist);}
   header.nav.solid .lang a{color:var(--ink-soft);}
   header.nav.solid .lang a.active{background:var(--gold); color:#fff;}
-  .menu-toggle{display:none; background:none; border:0; cursor:pointer; padding:6px;}
-  .menu-toggle span{display:block; width:26px; height:2px; background:#fff; margin:5px 0; transition:.3s;}
+  .menu-toggle{display:none; position:relative; width:44px; height:44px; background:none; border:0; cursor:pointer; padding:0;}
+  .menu-toggle span{position:absolute; left:9px; width:26px; height:2px; background:#fff; transition:transform .3s ease, opacity .2s ease, background .3s ease;}
+  .menu-toggle span:nth-child(1){top:13px;}
+  .menu-toggle span:nth-child(2){top:21px;}
+  .menu-toggle span:nth-child(3){top:29px;}
   header.nav.solid .menu-toggle span{background:var(--ink);}
 
   /* ============ HERO ============ */
@@ -385,14 +388,29 @@
     .talk-list{grid-template-columns:1fr;}
     .foot-grid{grid-template-columns:1fr 1fr;}
     .book .booklist{columns:1;}
+    body.menu-open{overflow:hidden;}
+    header.nav .brand{position:relative; z-index:60;}
+    header.nav.menu-open .brand{color:#fff;}
     .navlinks{
-      position:fixed; inset:0 0 0 auto; width:min(78vw,320px);
-      background:var(--deep); flex-direction:column; align-items:flex-start; justify-content:center;
-      padding:40px; gap:22px; transform:translateX(100%); transition:transform .4s ease;
+      position:fixed; inset:0; z-index:55; width:100%; height:100vh; min-height:100dvh;
+      background:var(--deep); flex-direction:column; align-items:center; justify-content:flex-start;
+      padding:calc(92px + env(safe-area-inset-top)) 24px calc(28px + env(safe-area-inset-bottom));
+      gap:0; overflow-y:auto; overscroll-behavior:contain;
+      opacity:0; visibility:hidden; pointer-events:none; transform:translateY(-12px);
+      transition:opacity .3s ease, transform .3s ease, visibility 0s linear .3s;
     }
-    .navlinks.open{transform:none;}
-    .navlinks a{color:#fff !important; font-size:1.05rem;}
-    .menu-toggle{display:block; z-index:60;}
+    .navlinks.open{opacity:1; visibility:visible; pointer-events:auto; transform:none; transition-delay:0s;}
+    .navlinks > a{display:block; width:min(100%,360px); padding:11px 16px; border-bottom:1px solid rgba(255,255,255,.1); color:#fff !important; font-size:clamp(1rem,4.5vw,1.12rem); text-align:center;}
+    .navlinks > a::after,.navlinks .lang a::after{display:none !important;}
+    .navlinks > a.btn{width:min(100%,280px); margin-top:16px; border:1.5px solid var(--gold-soft); color:#fff !important;}
+    .navlinks .lang{align-self:center; margin-top:18px; border-color:rgba(255,255,255,.5);}
+    .navlinks .lang a{color:#fff !important; font-size:.9rem !important;}
+    .navlinks .lang a.active{color:var(--deep) !important;}
+    .menu-toggle{display:block; z-index:60; flex:0 0 auto;}
+    header.nav.menu-open .menu-toggle span{background:#fff;}
+    .menu-toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(8px) rotate(45deg);}
+    .menu-toggle[aria-expanded="true"] span:nth-child(2){opacity:0;}
+    .menu-toggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-8px) rotate(-45deg);}
   }
   @media (max-width:560px){
     .claim-cards,.press-grid,.gallery-grid,.foot-grid,.tl-track{grid-template-columns:1fr;}
@@ -413,8 +431,8 @@
     </svg>
     Hannas&nbsp;hus
   </a>
-  <button class="menu-toggle" id="menuToggle" aria-label="Meny"><span></span><span></span><span></span></button>
-  <nav class="navlinks" id="navlinks">
+  <button class="menu-toggle" id="menuToggle" aria-label="Öppna meny" aria-controls="navlinks" aria-expanded="false"><span></span><span></span><span></span></button>
+  <nav class="navlinks" id="navlinks" aria-label="Huvudnavigation">
     <a href="#boken">Boken</a>
     <a href="#hanna">Hanna Lindh</a>
     <a href="#granparken">Granparken</a>
@@ -726,8 +744,17 @@
   // Mobile menu
   const toggle = document.getElementById('menuToggle');
   const links = document.getElementById('navlinks');
-  toggle.addEventListener('click', () => links.classList.toggle('open'));
-  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
+  const setMenu = (open) => {
+    links.classList.toggle('open', open);
+    nav.classList.toggle('menu-open', open);
+    document.body.classList.toggle('menu-open', open);
+    toggle.setAttribute('aria-expanded', String(open));
+    toggle.setAttribute('aria-label', open ? 'Stäng meny' : 'Öppna meny');
+  };
+  toggle.addEventListener('click', () => setMenu(!links.classList.contains('open')));
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
+  document.addEventListener('keydown', e => { if(e.key === 'Escape') setMenu(false); });
+  window.addEventListener('resize', () => { if(window.innerWidth > 900) setMenu(false); }, {passive:true});
 
   // Reveal on scroll
   const io = new IntersectionObserver((entries) => {
