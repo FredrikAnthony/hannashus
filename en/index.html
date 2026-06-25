@@ -198,6 +198,8 @@
   .book .booklist li{padding:7px 0 7px 24px; position:relative; color:var(--mist); break-inside:avoid;}
   .book .booklist li::before{content:""; position:absolute; left:0; top:14px; width:10px; height:10px; border-radius:50%; border:1.5px solid var(--gold-soft);}
   .book .note{font-size:.95rem; color:rgba(185,215,223,.8); border-top:1px solid rgba(255,255,255,.12); padding-top:20px;}
+  .book .ai-note{display:flex; align-items:flex-start; gap:12px; margin-top:18px; padding:15px 18px; border:1px solid rgba(200,162,74,.42); border-radius:10px; background:rgba(200,162,74,.08); color:var(--foam); font-size:.93rem; line-height:1.55;}
+  .book .ai-note::before{content:"✓"; flex:0 0 auto; display:grid; place-items:center; width:23px; height:23px; margin-top:1px; border-radius:50%; background:var(--gold); color:var(--deep); font-weight:700;}
 
   .story-images{background:linear-gradient(180deg,var(--paper),var(--foam));}
   .story-images .section-title{max-width:18ch;}
@@ -423,6 +425,7 @@
         <li>Memories, history and heritage</li>
       </ul>
       <p class="note">The book draws on archival material, photographs, newspaper sources and Ernst Lindh's previously unpublished memoirs.</p>
+      <p class="ai-note">The book was written and produced entirely without any involvement of AI.</p>
       <div style="margin-top:28px"><a href="#kontakt" class="btn-primary">Buy the book →</a></div>
     </div>
   </div>
