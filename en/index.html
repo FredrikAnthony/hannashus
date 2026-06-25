@@ -199,19 +199,17 @@
   .book .wrap{position:relative; z-index:1;}
   .book h2.section-title{color:#fff;}
   .book .kicker{color:var(--shallow);}
-  .book-gallery{display:grid; gap:18px; max-width:540px; margin-inline:auto; padding:clamp(18px,3vw,28px); border:1px solid rgba(200,162,74,.28); border-radius:20px; background:linear-gradient(145deg,#f8f3e9,#e5dac4); box-shadow:0 34px 70px -34px rgba(0,0,0,.85);}
+  .book-gallery{display:grid; gap:18px; max-width:620px; margin-inline:auto; padding:clamp(18px,3vw,28px); border:1px solid rgba(200,162,74,.28); border-radius:20px; background:linear-gradient(145deg,#f8f3e9,#e5dac4); box-shadow:0 34px 70px -34px rgba(0,0,0,.85);}
   .book-gallery figure{overflow:hidden; border-radius:10px; background:#fff; border:1px solid rgba(18,40,53,.1); box-shadow:0 18px 36px -22px rgba(18,40,53,.7);}
-  .book-gallery-main{width:min(72%,360px); margin-inline:auto; transform:perspective(900px) rotateY(-3deg) rotateZ(-1deg); transition:transform .4s ease, box-shadow .4s ease;}
+  .book-gallery-main{width:100%; margin-inline:auto; transform:perspective(900px) rotateY(-1.5deg) rotateZ(-.35deg); transition:transform .4s ease, box-shadow .4s ease;}
   .book-gallery-main:hover{transform:perspective(900px) rotateY(0) rotateZ(0) translateY(-4px); box-shadow:0 28px 52px -24px rgba(18,40,53,.8);}
-  .book-gallery-main .book-shot{aspect-ratio:3/4; overflow:hidden; background:#e8e0d2;}
-  .book-gallery-main img{display:block; width:100%; height:100%; object-fit:cover; object-position:center 51%;}
+  .book-gallery-main .book-shot{aspect-ratio:4/3; overflow:hidden; background:#e8e0d2;}
+  .book-gallery-main img{display:block; width:100%; height:100%; object-fit:cover;}
   .book-gallery figcaption{padding:10px 8px; color:var(--deep); text-align:center; font-size:.72rem; font-weight:600; letter-spacing:.12em; text-transform:uppercase; background:#fff;}
   .book-gallery-thumbs{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px;}
-  .book-gallery-thumbs figure{display:grid; grid-template-rows:110px auto; min-width:0;}
-  .book-gallery-thumbs .book-shot{overflow:hidden; background:#e8e0d2;}
+  .book-gallery-thumbs figure{display:grid; grid-template-rows:auto auto; min-width:0;}
+  .book-gallery-thumbs .book-shot{aspect-ratio:4/3; overflow:hidden; background:#e8e0d2;}
   .book-gallery-thumbs img{display:block; width:100%; height:100%; object-fit:cover; transition:transform .4s ease;}
-  .book-gallery-thumbs figure:nth-child(1) img{object-position:center 50%;}
-  .book-gallery-thumbs figure:nth-child(2) img,.book-gallery-thumbs figure:nth-child(3) img{object-position:center 48%;}
   .book-gallery-thumbs figure:hover img{transform:scale(1.055);}
   .book .booklist{list-style:none; columns:2; gap:14px; margin:24px 0 30px;}
   .book .booklist li{padding:7px 0 7px 24px; position:relative; color:var(--mist); break-inside:avoid;}
@@ -472,11 +470,11 @@
 <section class="book" id="boken">
   <div class="wrap grid2">
     <div class="reveal book-gallery">
-      <figure class="book-gallery-main"><div class="book-shot"><img src="../bokbild1.jpg" alt="Front cover of the book Hannas hus"></div><figcaption>Hannas hus · Hardcover</figcaption></figure>
+      <figure class="book-gallery-main"><div class="book-shot"><img src="../bokbild1-produkt.jpg" alt="Front cover of the book Hannas hus"></div><figcaption>Hannas hus · Hardcover</figcaption></figure>
       <div class="book-gallery-thumbs">
-        <figure><div class="book-shot"><img src="../bokbild2.jpg" alt="Back cover of the book Hannas hus"></div><figcaption>Back cover</figcaption></figure>
-        <figure><div class="book-shot"><img src="../bokbild3.jpg" alt="A photographic spread from the book Hannas hus"></div><figcaption>Photo spread</figcaption></figure>
-        <figure><div class="book-shot"><img src="../bokbild4.jpg" alt="A text spread from the book Hannas hus"></div><figcaption>Inside pages</figcaption></figure>
+        <figure><div class="book-shot"><img src="../bokbild2-produkt.jpg" alt="Back cover of the book Hannas hus"></div><figcaption>Back cover</figcaption></figure>
+        <figure><div class="book-shot"><img src="../bokbild3-produkt.jpg" alt="A photographic spread from the book Hannas hus"></div><figcaption>Photo spread</figcaption></figure>
+        <figure><div class="book-shot"><img src="../bokbild4-produkt.jpg" alt="A text spread from the book Hannas hus"></div><figcaption>Inside pages</figcaption></figure>
       </div>
     </div>
     <div class="reveal">
