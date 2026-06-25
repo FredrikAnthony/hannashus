@@ -178,6 +178,22 @@
   .intro p.body{font-size:1.08rem; color:var(--ink-soft); margin-top:18px;}
   .intro .pullquote{margin-top:30px; padding-left:22px; border-left:3px solid var(--gold); font-family:var(--serif); font-style:italic; font-size:1.15rem; color:var(--sea);}
 
+  .book-summary{background:var(--paper); border-top:1px solid rgba(47,126,155,.12);}
+  .summary-grid{display:grid; grid-template-columns:minmax(0,1.55fr) minmax(260px,.65fr); gap:clamp(40px,7vw,90px); align-items:start;}
+  .summary-copy{max-width:72ch;}
+  .summary-copy .summary-lead{margin:24px 0 20px; font-family:var(--serif); font-size:clamp(1.28rem,2.3vw,1.65rem); line-height:1.5; color:var(--navy);}
+  .summary-copy p{color:var(--ink-soft); line-height:1.78;}
+  .summary-copy p + p{margin-top:16px;}
+  .summary-source{margin-top:24px !important; padding-top:18px; border-top:1px solid var(--mist); font-size:.9rem; color:var(--sea) !important;}
+  .summary-path{padding:28px; border-radius:12px; background:var(--foam); box-shadow:0 18px 45px -38px rgba(18,40,53,.55);}
+  .summary-path h3{font-size:1.45rem; color:var(--deep); margin-bottom:20px;}
+  .summary-path ol{list-style:none; display:grid; gap:0;}
+  .summary-path li{position:relative; padding:0 0 20px 32px; color:var(--ink-soft); font-size:.93rem; line-height:1.5;}
+  .summary-path li:last-child{padding-bottom:0;}
+  .summary-path li::before{content:""; position:absolute; left:4px; top:5px; width:10px; height:10px; border-radius:50%; background:var(--gold);}
+  .summary-path li:not(:last-child)::after{content:""; position:absolute; left:8px; top:17px; bottom:2px; width:2px; background:var(--mist);}
+  .summary-path strong{display:block; color:var(--sea); font-family:var(--serif); font-size:1.03rem;}
+
   .book{background:var(--deep); color:var(--foam); position:relative; overflow:hidden;}
   .book::after{content:""; position:absolute; inset:0; background:radial-gradient(120% 80% at 80% 0%, rgba(47,126,155,.35), transparent 60%); pointer-events:none;}
   .book .wrap{position:relative; z-index:1;}
@@ -319,6 +335,7 @@
 
   @media (max-width:900px){
     .grid2{grid-template-columns:1fr; gap:40px;}
+    .summary-grid{grid-template-columns:1fr;}
     .story-image-grid{grid-template-columns:1fr;}
     .story-photo{height:min(110vw,520px);}
     .story-card--quote{grid-template-columns:1fr;}
@@ -425,6 +442,34 @@
       <p class="body">Between 1879 and 1881, Hanna Lindh and her family had Pensionat Granparken built above Societetsparken in Norrtälje. The first guests moved in in 1883, and the guesthouse became part of the town's emergence as a seaside resort and summer destination. But who was the woman behind it all? And why has her story almost been forgotten?</p>
       <p class="pullquote">Hanna's House is the story of a person, a house, and a Norrtälje in transformation.</p>
     </div>
+  </div>
+</section>
+
+<!-- ============ THE STORY IN BRIEF ============ -->
+<section class="book-summary" id="summary">
+  <div class="wrap summary-grid">
+    <article class="summary-copy reveal">
+      <p class="kicker">The book in brief</p>
+      <h2 class="section-title">One woman, one guesthouse and a society in transformation</h2>
+      <p class="summary-lead"><em>Hanna's House</em> follows Johanna “Hanna” Charlotta Lindh (1839–1916) and asks why she built a guesthouse in Norrtälje — and how the house came to accommodate far more than summer visitors.</p>
+      <p>The story begins with Hanna's modest childhood in Småland and her journey from domestic service and sewing to Norrtälje's growing life as a seaside resort. She meets Nils Lindh at the tailor's shop. They marry, raise a family and build a livelihood shaped by hard work, thrift and confidence in the future. As tourism expands, Hanna buys land in Granparken in 1879. The guesthouse is built between 1879 and 1881 and welcomes its first guests in 1883.</p>
+      <p>Hanna creates an open-air guesthouse where nature, hospitality, food, education and restrained aesthetics form a whole. Returning society guests encounter a Norrtälje being transformed by the railway, bathing culture, popular movements, industrialisation and new ideas about health. The guesthouse becomes both the family home and a place where the old world meets the new.</p>
+      <p>The deaths of three sons, especially the loss in the winter of 1885, transform Hanna's outlook. She increasingly connects illness with poverty and class, questions established religious and bourgeois ideals, and places action before profession of faith. In the spring of 1886, she helps establish the Salvation Army in Norrtälje. The guesthouse opens its doors to meetings, discussion and people seeking social change. Through street activism, care for struggling families, a foster daughter and cooperation with the Stockholm Malt Cure Institute, Hanna emerges as an early feminist, activist and female entrepreneur.</p>
+      <p>The book also follows the family through Ernst Lindh's education, the Stockholm Exhibition of 1897, the women's conference, the Pythagoras industry and the guesthouse's continued expansion. After Nils's death in 1906 and foster daughter Mia's death in 1915, Hanna's health declines. She dies in 1916, but the house survives. Pensionat Granparken is now one of Sweden's oldest open-air guesthouses and an important part of the history of female entrepreneurship, the early Salvation Army and tourism in Norrtälje.</p>
+      <p class="summary-source">The book draws primarily on the previously unpublished 1948 memoir <em>Mitt levnadslopp</em> by Hanna's son Ernst Lindh, together with archives, newspapers, photographs and historical research.</p>
+    </article>
+    <aside class="summary-path reveal" aria-label="The book's chronology">
+      <h3>The story's path</h3>
+      <ol>
+        <li><strong>The 1870s</strong>Hanna arrives in Norrtälje, works as a seamstress and meets Nils.</li>
+        <li><strong>1879–1883</strong>The guesthouse is built and welcomes its first guests.</li>
+        <li><strong>1885</strong>The loss of her third son becomes a decisive personal crisis.</li>
+        <li><strong>1886–1889</strong>Activism, the Salvation Army, the malt cure and social work.</li>
+        <li><strong>1890–1903</strong>Education, new social ideas and continued development of the guesthouse.</li>
+        <li><strong>1906–1916</strong>Family losses, the shadow of war and Hanna's final years.</li>
+        <li><strong>The legacy</strong>The house lives on as Pensionat Granparken.</li>
+      </ol>
+    </aside>
   </div>
 </section>
 

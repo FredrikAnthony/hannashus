@@ -190,6 +190,23 @@
     font-family:var(--serif); font-style:italic; font-size:1.15rem; color:var(--sea);
   }
 
+  /* BOOK SUMMARY */
+  .book-summary{background:var(--paper); border-top:1px solid rgba(47,126,155,.12);}
+  .summary-grid{display:grid; grid-template-columns:minmax(0,1.55fr) minmax(260px,.65fr); gap:clamp(40px,7vw,90px); align-items:start;}
+  .summary-copy{max-width:72ch;}
+  .summary-copy .summary-lead{margin:24px 0 20px; font-family:var(--serif); font-size:clamp(1.28rem,2.3vw,1.65rem); line-height:1.5; color:var(--navy);}
+  .summary-copy p{color:var(--ink-soft); line-height:1.78;}
+  .summary-copy p + p{margin-top:16px;}
+  .summary-source{margin-top:24px !important; padding-top:18px; border-top:1px solid var(--mist); font-size:.9rem; color:var(--sea) !important;}
+  .summary-path{padding:28px; border-radius:12px; background:var(--foam); box-shadow:0 18px 45px -38px rgba(18,40,53,.55);}
+  .summary-path h3{font-size:1.45rem; color:var(--deep); margin-bottom:20px;}
+  .summary-path ol{list-style:none; display:grid; gap:0;}
+  .summary-path li{position:relative; padding:0 0 20px 32px; color:var(--ink-soft); font-size:.93rem; line-height:1.5;}
+  .summary-path li:last-child{padding-bottom:0;}
+  .summary-path li::before{content:""; position:absolute; left:4px; top:5px; width:10px; height:10px; border-radius:50%; background:var(--gold);}
+  .summary-path li:not(:last-child)::after{content:""; position:absolute; left:8px; top:17px; bottom:2px; width:2px; background:var(--mist);}
+  .summary-path strong{display:block; color:var(--sea); font-family:var(--serif); font-size:1.03rem;}
+
   /* BOOK section */
   .book{background:var(--deep); color:var(--foam); position:relative; overflow:hidden;}
   .book::after{content:""; position:absolute; inset:0; background:radial-gradient(120% 80% at 80% 0%, rgba(47,126,155,.35), transparent 60%); pointer-events:none;}
@@ -376,6 +393,7 @@
   /* ============ RESPONSIVE ============ */
   @media (max-width:900px){
     .grid2{grid-template-columns:1fr; gap:40px;}
+    .summary-grid{grid-template-columns:1fr;}
     .story-image-grid{grid-template-columns:1fr;}
     .story-photo{height:min(110vw,520px);}
     .story-card--quote{grid-template-columns:1fr;}
@@ -482,6 +500,34 @@
       <p class="body">Mellan 1879 och 1881 lät Hanna Lindh och hennes familj uppföra Pensionat Granparken ovanför Societetsparken i Norrtälje. De första gästerna flyttade in 1883, och pensionatet kom att bli en del av stadens utveckling som badort och sommarstad. Men vem var kvinnan bakom verksamheten? Och varför har hennes historia nästan fallit i glömska?</p>
       <p class="pullquote">Hannas hus är berättelsen om en människa, ett hus och ett Norrtälje i förändring.</p>
     </div>
+  </div>
+</section>
+
+<!-- ============ BOKENS BERÄTTELSE ============ -->
+<section class="book-summary" id="sammanfattning">
+  <div class="wrap summary-grid">
+    <article class="summary-copy reveal">
+      <p class="kicker">Boken i korthet</p>
+      <h2 class="section-title">En kvinna, ett pensionat och ett samhälle i förändring</h2>
+      <p class="summary-lead"><em>Hannas hus</em> följer Johanna ”Hanna” Charlotta Lindh (1839–1916) och söker svaret på varför hon byggde ett pensionat i Norrtälje — och hur huset kom att rymma långt mer än sommargäster.</p>
+      <p>Berättelsen börjar i Hannas enkla uppväxt i Småland och hennes väg från arbete som piga och sömmerska till Norrtäljes växande badortsliv. I skrädderiet möter hon Nils Lindh. De gifter sig, bildar familj och bygger tillsammans en verksamhet präglad av hårt arbete, sparsamhet och framtidstro. När turismen växer köper Hanna en tomt i Granparken 1879. Pensionatet uppförs under åren 1879–1881 och tar emot sina första gäster 1883.</p>
+      <p>Hanna skapar ett friluftspensionat där natur, gästfrihet, mat, bildning och en sparsmakad estetik bildar en helhet. Återkommande societetsgäster möter ett Norrtälje som förändras av järnväg, badkultur, folkrörelser, industrialisering och nya idéer om hälsa. Pensionatet blir både familjens hem och en plats där den gamla världen möter den nya.</p>
+      <p>Tre söners död, särskilt förlusten vintern 1885, förändrar Hannas livssyn. Hon börjar tydligare koppla sjukdom till fattigdom och klass, ifrågasätter invanda religiösa och borgerliga ideal och sätter handling före bekännelse. Våren 1886 är hon med och etablerar Frälsningsarmén i Norrtälje. Pensionatet öppnas för möten, samtal och människor som vill förändra samhället. Genom gatupredikningar, omsorg om utsatta familjer, en fosterdotter och samarbetet med Stockholms Maltkuranstalt framträder Hanna som tidig feminist, aktivist och kvinnlig företagare.</p>
+      <p>Boken följer samtidigt familjens liv genom Ernst Lindhs utbildning, Stockholmsutställningen 1897, kvinnokonferensen, Pythagorasindustrin och pensionatets fortsatta utbyggnad. Efter Nils död 1906 och fosterdottern Mias död 1915 försvagas Hanna. Hon avlider 1916, men huset lever vidare. Pensionat Granparken är i dag ett av Sveriges äldsta friluftspensionat och en viktig del av berättelsen om kvinnligt företagande, Frälsningsarméns tidiga historia och turismens utveckling i Norrtälje.</p>
+      <p class="summary-source">Boken bygger främst på sonen Ernst Lindhs tidigare opublicerade memoarer <em>Mitt levnadslopp</em> från 1948, tillsammans med arkiv, tidningar, fotografier och historisk forskning.</p>
+    </article>
+    <aside class="summary-path reveal" aria-label="Bokens kronologi">
+      <h3>Berättelsens väg</h3>
+      <ol>
+        <li><strong>1870-talet</strong>Hanna kommer till Norrtälje, arbetar som sömmerska och möter Nils.</li>
+        <li><strong>1879–1883</strong>Pensionatet byggs och de första gästerna flyttar in.</li>
+        <li><strong>1885</strong>Förlusten av den tredje sonen blir en avgörande livskris.</li>
+        <li><strong>1886–1889</strong>Aktivism, Frälsningsarmén, maltkur och socialt arbete.</li>
+        <li><strong>1890–1903</strong>Bildning, nya samhällsidéer och fortsatt utveckling av pensionatet.</li>
+        <li><strong>1906–1916</strong>Familjeförluster, världskrigets skugga och Hannas sista år.</li>
+        <li><strong>Arvet</strong>Huset lever vidare som Pensionat Granparken.</li>
+      </ol>
+    </aside>
   </div>
 </section>
 
