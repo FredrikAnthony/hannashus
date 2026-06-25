@@ -240,6 +240,7 @@
     background:linear-gradient(160deg,#cfe1e6,#9bbfc9);
     box-shadow:0 30px 60px -28px rgba(18,40,53,.5);
   }
+  .portrait-frame img{display:block; width:100%; height:100%; object-fit:cover; object-position:center top; filter:grayscale(100%);}
   .portrait-frame .placeholder{position:absolute; inset:0; display:flex; align-items:flex-end; justify-content:center; color:var(--navy);}
   .portrait-frame figcaption{
     position:absolute; left:0; right:0; bottom:0; padding:20px;
@@ -251,6 +252,10 @@
     background:var(--foam); color:var(--sea); border:1px solid var(--mist);
   }
   .lead-para{font-size:1.12rem; color:var(--ink-soft); margin-bottom:16px;}
+  .hanna-grid{align-items:start;}
+  .historical-ad{margin-top:24px; padding:24px clamp(20px,3vw,30px); border-left:4px solid var(--gold); border-radius:0 8px 8px 0; background:var(--foam);}
+  .historical-ad p{font-family:var(--serif); font-size:.98rem; line-height:1.72; color:var(--ink-soft);}
+  .historical-ad cite{display:block; margin-top:16px; color:var(--sea); font-size:.78rem; font-style:normal; font-weight:600; letter-spacing:.08em; text-transform:uppercase;}
 
   /* GRANPARKEN + timeline */
   .granparken{background:linear-gradient(180deg,var(--foam),var(--paper));}
@@ -512,23 +517,20 @@
 
 <!-- ============ HANNA ============ -->
 <section id="hanna">
-  <div class="wrap grid2">
+  <div class="wrap grid2 hanna-grid">
     <figure class="portrait-frame reveal">
-      <div class="placeholder">
-        <svg width="100%" viewBox="0 0 320 400" xmlns="http://www.w3.org/2000/svg">
-          <rect width="320" height="400" fill="none"/>
-          <circle cx="160" cy="150" r="60" fill="#143850" opacity=".25"/>
-          <path d="M70 400 q 0 -120 90 -120 q 90 0 90 120z" fill="#143850" opacity=".25"/>
-        </svg>
-      </div>
+      <img src="portratthannalindh.jpeg" alt="Porträtt av Hanna Lindh" loading="lazy">
       <figcaption>Hanna Lindh — pensionatsägare och pionjär.</figcaption>
     </figure>
     <div class="reveal">
-      <p class="kicker">Människan bakom huset</p>
-      <h2 class="section-title">Hanna Lindh</h2>
+      <p class="kicker">Personen bakom</p>
+      <h2 class="section-title">Hanna Lindh — personen bakom</h2>
       <div class="tags"><span>Entreprenör</span><span>Pensionatsägare</span><span>Pionjär</span></div>
-      <p class="lead-para">När Norrtälje växte fram som badort skapade Hanna Lindh en verksamhet som kom att ta emot generationer av sommargäster.</p>
-      <p style="color:var(--ink-soft)">Men hennes historia handlar om mer än ett pensionat. Den handlar om tro, arbete, familj och ett samhälle i förändring.</p>
+      <p class="lead-para">Hanna drevs av verklig förändring. Den 15 juni 1888 annonserar hon i <em>Norrtelje Tidning</em>:</p>
+      <blockquote class="historical-ad">
+        <p>”Norrtelje Maltkuranstalt, filial af Stockholms Maltkuranstalt, öppnas å Sanatoriet i Granparken, huset n:o 26, måndagen den 18 innevarande juni. Nyberedd varm maltinfusion tillhandahålles den ärade allmänheten dagligen från kl. 9 f.m. till 2 e.m. till drikning på stället eller afhemtning. Enligt å Badhusets och Societetens anslagstaflor äfvensom å anstaltens tillgängliga läkarintyg är maltkuren särdeles verksam vid bleksot, blodbrist och allmän svaghet, vid hotande lungsot, strup-, lung-, mag- och tarmkatarr m.fl. sjukdomar. Priset är pr månad 12 kr, vid hemskickning 15 kr, för barn 10 kr; rabatt fås då familjebiljetter tagas. Närmare underrättelser hafva herr doktorer A. Brandt och Y. Ljungberg benäget åtagit sig att meddela. Norrtälje den 15 juni 1888. /Anstaltens föreståndare.”</p>
+        <cite>Norrtelje Tidning, 15 juni 1888</cite>
+      </blockquote>
     </div>
   </div>
 </section>

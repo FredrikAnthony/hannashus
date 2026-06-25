@@ -221,11 +221,16 @@
   .story-quote cite{margin-top:16px; font-size:.72rem; font-style:normal; letter-spacing:.14em; text-transform:uppercase; color:var(--gold);}
 
   .portrait-frame{position:relative; border-radius:8px; overflow:hidden; aspect-ratio:4/5; background:linear-gradient(160deg,#cfe1e6,#9bbfc9); box-shadow:0 30px 60px -28px rgba(18,40,53,.5);}
+  .portrait-frame img{display:block; width:100%; height:100%; object-fit:cover; object-position:center top; filter:grayscale(100%);}
   .portrait-frame .placeholder{position:absolute; inset:0; display:flex; align-items:flex-end; justify-content:center; color:var(--navy);}
   .portrait-frame figcaption{position:absolute; left:0; right:0; bottom:0; padding:20px; background:linear-gradient(transparent, rgba(11,36,54,.8)); color:#fff; font-size:.85rem; letter-spacing:.04em;}
   .tags{display:flex; flex-wrap:wrap; gap:10px; margin:6px 0 22px;}
   .tags span{font-size:.82rem; letter-spacing:.04em; padding:6px 14px; border-radius:30px; background:var(--foam); color:var(--sea); border:1px solid var(--mist);}
   .lead-para{font-size:1.12rem; color:var(--ink-soft); margin-bottom:16px;}
+  .hanna-grid{align-items:start;}
+  .historical-ad{margin-top:24px; padding:24px clamp(20px,3vw,30px); border-left:4px solid var(--gold); border-radius:0 8px 8px 0; background:var(--foam);}
+  .historical-ad p{font-family:var(--serif); font-size:.98rem; line-height:1.72; color:var(--ink-soft);}
+  .historical-ad cite{display:block; margin-top:16px; color:var(--sea); font-size:.78rem; font-style:normal; font-weight:600; letter-spacing:.08em; text-transform:uppercase;}
 
   .granparken{background:linear-gradient(180deg,var(--foam),var(--paper));}
   .timeline{margin-top:54px; position:relative;}
@@ -458,23 +463,20 @@
 
 <!-- ============ HANNA ============ -->
 <section id="hanna">
-  <div class="wrap grid2">
+  <div class="wrap grid2 hanna-grid">
     <figure class="portrait-frame reveal">
-      <div class="placeholder">
-        <svg width="100%" viewBox="0 0 320 400" xmlns="http://www.w3.org/2000/svg">
-          <rect width="320" height="400" fill="none"/>
-          <circle cx="160" cy="150" r="60" fill="#143850" opacity=".25"/>
-          <path d="M70 400 q 0 -120 90 -120 q 90 0 90 120z" fill="#143850" opacity=".25"/>
-        </svg>
-      </div>
+      <img src="../portratthannalindh.jpeg" alt="Portrait of Hanna Lindh" loading="lazy">
       <figcaption>Hanna Lindh — guesthouse owner and pioneer.</figcaption>
     </figure>
     <div class="reveal">
-      <p class="kicker">The woman behind the house</p>
-      <h2 class="section-title">Hanna Lindh</h2>
+      <p class="kicker">The person behind it all</p>
+      <h2 class="section-title">Hanna Lindh — the person behind it all</h2>
       <div class="tags"><span>Entrepreneur</span><span>Guesthouse owner</span><span>Pioneer</span></div>
-      <p class="lead-para">As Norrtälje rose as a seaside resort, Hanna Lindh built a business that would welcome generations of summer guests.</p>
-      <p style="color:var(--ink-soft)">But her story is about more than a guesthouse. It is about faith, work, family, and a society in change.</p>
+      <p class="lead-para">Hanna was driven by real change. On 15 June 1888, she placed the following advertisement in <em>Norrtelje Tidning</em>:</p>
+      <blockquote class="historical-ad">
+        <p>“Norrtelje Malt Cure Institute, a branch of the Stockholm Malt Cure Institute, will open at the Sanatorium in Granparken, house no. 26, on Monday the 18th of this June. Freshly prepared warm malt infusion will be available to the esteemed public daily from 9 a.m. to 2 p.m., for drinking on the premises or collection. According to notices posted at the Bathhouse and the Society, as well as medical certificates available at the institute, the malt cure is particularly effective for chlorosis, anaemia and general weakness, threatened consumption, and catarrh of the throat, lungs, stomach and intestines, among other illnesses. The price is 12 kronor per month, or 15 kronor for home delivery; for children, 10 kronor; a discount is available for family tickets. Doctors A. Brandt and Y. Ljungberg have kindly undertaken to provide further information. Norrtälje, 15 June 1888. /The superintendent of the institute.”</p>
+        <cite>Norrtelje Tidning, 15 June 1888</cite>
+      </blockquote>
     </div>
   </div>
 </section>
