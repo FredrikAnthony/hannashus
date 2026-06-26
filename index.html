@@ -239,8 +239,9 @@
   .book .booklist li{padding:7px 0 7px 24px; position:relative; color:var(--mist); break-inside:avoid;}
   .book .booklist li::before{content:""; position:absolute; left:0; top:14px; width:10px; height:10px; border-radius:50%; border:1.5px solid var(--gold-soft);}
   .book .note{font-size:.95rem; color:rgba(185,215,223,.8); border-top:1px solid rgba(255,255,255,.12); padding-top:20px;}
-  .book .ai-note{display:flex; align-items:flex-start; gap:12px; margin-top:18px; padding:15px 18px; border:1px solid rgba(200,162,74,.42); border-radius:10px; background:rgba(200,162,74,.08); color:var(--foam); font-size:.93rem; line-height:1.55;}
-  .book .ai-note::before{content:"✓"; flex:0 0 auto; display:grid; place-items:center; width:23px; height:23px; margin-top:1px; border-radius:50%; background:var(--gold); color:var(--deep); font-weight:500;}
+  .book .ai-verification{display:flex; align-items:center; gap:18px; margin-top:18px; padding:13px 18px 13px 12px; border:1px solid rgba(200,162,74,.42); border-radius:12px; background:rgba(200,162,74,.07); color:var(--foam);}
+  .book .ai-verification img{flex:0 0 auto; width:clamp(82px,9vw,112px); filter:drop-shadow(0 8px 14px rgba(0,0,0,.22)); opacity:.94;}
+  .book .ai-verification p{font-size:.93rem; line-height:1.55;}
 
   /* STORY IMAGES */
   .story-images{background:linear-gradient(180deg,var(--paper),var(--foam));}
@@ -356,24 +357,6 @@
   .talk-list li{padding:14px 0; border-bottom:1px solid rgba(255,255,255,.18); font-size:1.05rem; display:flex; align-items:center; gap:14px;}
   .talk-list li::before{content:"›"; color:var(--gold-soft); font-size:1.3rem;}
 
-  /* PRESS */
-  .press-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:18px; margin-top:42px;}
-  .press-card{
-    background:#fff; border:1px solid var(--mist); border-radius:12px; padding:28px 24px;
-    transition:transform .3s ease, box-shadow .3s ease;
-  }
-  .press-card:hover{transform:translateY(-4px); box-shadow:0 20px 40px -22px rgba(18,40,53,.3);}
-  .press-card .src{font-family:var(--serif); font-size:1.2rem; color:var(--deep); margin-bottom:8px;}
-  .press-card p{font-size:.92rem; color:var(--ink-soft);}
-
-  /* KEY MESSAGE banner */
-  .keymsg{background:var(--deep); color:#fff; text-align:center; position:relative; overflow:hidden;}
-  .keymsg .scene2{position:absolute; inset:0; opacity:.25;}
-  .keymsg .wrap{position:relative; z-index:1;}
-  .keymsg p{font-family:var(--serif); font-size:clamp(1.5rem,3.4vw,2.4rem); font-weight:400; line-height:1.4; max-width:30ch; margin:0 auto; font-style:italic;}
-  .keymsg p strong{color:var(--gold-soft); font-weight:400; font-style:normal;}
-  .keymsg .btn-primary{margin-top:40px;}
-
   /* FOOTER */
   footer.site{background:#081d2c; color:var(--mist); padding-block:70px 40px;}
   .foot-grid{display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:40px;}
@@ -398,7 +381,6 @@
     .story-card--quote{grid-template-columns:1fr;}
     .story-card--quote .story-photo{height:auto; margin:20px 20px 0;}
     .claim-cards{grid-template-columns:1fr 1fr;}
-    .press-grid{grid-template-columns:1fr 1fr;}
     .gallery-grid{grid-template-columns:1fr 1fr;}
     .tl-track{grid-template-columns:1fr 1fr; gap:30px;}
     .timeline::before{display:none;}
@@ -430,7 +412,7 @@
     .menu-toggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-8px) rotate(-45deg);}
   }
   @media (max-width:560px){
-    .claim-cards,.press-grid,.gallery-grid,.foot-grid,.tl-track{grid-template-columns:1fr;}
+    .claim-cards,.gallery-grid,.foot-grid,.tl-track{grid-template-columns:1fr;}
     .hero h1{width:122%; transform:scaleX(.82); font-size:clamp(3rem,16vw,4.7rem); letter-spacing:.065em;}
   }
 </style>
@@ -497,7 +479,7 @@
       <p class="big">Vem var Hanna Lindh?</p>
     </div>
     <div class="reveal">
-      <p class="body">Mellan 1879 och 1881 lät Hanna Lindh och hennes familj uppföra Pensionat Granparken ovanför Societetsparken i Norrtälje. De första gästerna flyttade in 1883, och pensionatet kom att bli en del av stadens utveckling som badort och sommarstad. Men vem var kvinnan bakom verksamheten? Och varför har hennes historia nästan fallit i glömska?</p>
+      <p class="body">Mellan 1879 och 1881 lät Hanna Lindh uppföra Pensionat Granparken ovanför Societetsparken i Norrtälje. De första gästerna flyttade in 1883. <em>Hannas hus</em> lyfter fram kvinnan bakom verksamheten — och staden som växte fram runt henne.</p>
       <p class="pullquote">Hannas hus är berättelsen om en människa, ett hus och ett Norrtälje i förändring.</p>
     </div>
   </div>
@@ -509,22 +491,17 @@
     <article class="summary-copy reveal">
       <p class="kicker">Boken i korthet</p>
       <h2 class="section-title">En kvinna, ett pensionat och ett samhälle i förändring</h2>
-      <p class="summary-lead"><em>Hannas hus</em> följer Johanna ”Hanna” Charlotta Lindh (1839–1916) och söker svaret på varför hon byggde ett pensionat i Norrtälje — och hur huset kom att rymma långt mer än sommargäster.</p>
-      <p>Berättelsen börjar i Hannas enkla uppväxt i Småland och hennes väg från arbete som piga och sömmerska till Norrtäljes växande badortsliv. I skrädderiet möter hon Nils Lindh. De gifter sig, bildar familj och bygger tillsammans en verksamhet präglad av hårt arbete, sparsamhet och framtidstro. När turismen växer köper Hanna en tomt i Granparken 1879. Pensionatet uppförs under åren 1879–1881 och tar emot sina första gäster 1883.</p>
-      <p>Hanna skapar ett friluftspensionat där natur, gästfrihet, mat, bildning och en sparsmakad estetik bildar en helhet. Återkommande societetsgäster möter ett Norrtälje som förändras av järnväg, badkultur, folkrörelser, industrialisering och nya idéer om hälsa. Pensionatet blir både familjens hem och en plats där den gamla världen möter den nya.</p>
-      <p>Tre söners död, särskilt förlusten vintern 1885, förändrar Hannas livssyn. Hon börjar tydligare koppla sjukdom till fattigdom och klass, ifrågasätter invanda religiösa och borgerliga ideal och sätter handling före bekännelse. Våren 1886 är hon med och etablerar Frälsningsarmén i Norrtälje. Pensionatet öppnas för möten, samtal och människor som vill förändra samhället. Genom gatupredikningar, omsorg om utsatta familjer, en fosterdotter och samarbetet med Stockholms Maltkuranstalt framträder Hanna som tidig feminist, aktivist och kvinnlig företagare.</p>
-      <p>Boken följer samtidigt familjens liv genom Ernst Lindhs utbildning, Stockholmsutställningen 1897, kvinnokonferensen, Pythagorasindustrin och pensionatets fortsatta utbyggnad. Efter Nils död 1906 och fosterdottern Mias död 1915 försvagas Hanna. Hon avlider 1916, men huset lever vidare. Pensionat Granparken är i dag ett av Sveriges äldsta friluftspensionat och en viktig del av berättelsen om kvinnligt företagande, Frälsningsarméns tidiga historia och turismens utveckling i Norrtälje.</p>
-      <p class="summary-source">Boken bygger främst på sonen Ernst Lindhs tidigare opublicerade memoarer <em>Mitt levnadslopp</em> från 1948, tillsammans med arkiv, tidningar, fotografier och historisk forskning.</p>
+      <p class="summary-lead"><em>Hannas hus</em> är den första sammanhållna berättelsen om Johanna ”Hanna” Charlotta Lindh (1839–1916), kvinnan bakom Pensionat Granparken.</p>
+      <p>Boken följer Hanna från enkla förhållanden i Småland till Norrtäljes badortsliv, där hon bygger ett pensionat som blir både familjehem, mötesplats och social arena.</p>
+      <p>Efter en svår familjeförlust 1885 förändras Hannas livssyn. Hon engagerar sig i Frälsningsarmén, arbetar för kvinnor och barn och framträder som tidig feminist, aktivist och kvinnlig företagare.</p>
+      <p class="summary-source">Bygger på Ernst Lindhs tidigare opublicerade memoarer, arkiv, tidningar, fotografier och ny forskning.</p>
     </article>
     <aside class="summary-path reveal" aria-label="Bokens kronologi">
       <h3>Berättelsens väg</h3>
       <ol>
-        <li><strong>1870-talet</strong>Hanna kommer till Norrtälje, arbetar som sömmerska och möter Nils.</li>
-        <li><strong>1879–1883</strong>Pensionatet byggs och de första gästerna flyttar in.</li>
-        <li><strong>1885</strong>Förlusten av den tredje sonen blir en avgörande livskris.</li>
-        <li><strong>1886–1889</strong>Aktivism, Frälsningsarmén, maltkur och socialt arbete.</li>
-        <li><strong>1890–1903</strong>Bildning, nya samhällsidéer och fortsatt utveckling av pensionatet.</li>
-        <li><strong>1906–1916</strong>Familjeförluster, världskrigets skugga och Hannas sista år.</li>
+        <li><strong>1879–1881</strong>Pensionat Granparken uppförs.</li>
+        <li><strong>1883</strong>De första gästerna flyttar in.</li>
+        <li><strong>1885–1888</strong>Livskris, aktivism och socialt arbete.</li>
         <li><strong>Arvet</strong>Huset lever vidare som Pensionat Granparken.</li>
       </ol>
     </aside>
@@ -554,7 +531,10 @@
         <li>Minnen, historia och hembygd</li>
       </ul>
       <p class="note">Boken bygger på arkivmaterial, fotografier, tidningskällor och Ernst Lindhs tidigare opublicerade memoarer.</p>
-      <p class="ai-note">Boken är i sin helhet skriven och framtagen utan någon som helst medverkan av AI.</p>
+      <div class="ai-verification">
+        <img src="assets/ai-verifieringsmarke.png" alt="Märke: 100 procent icke AI-genererad, skriven och framtagen utan AI">
+        <p>Boken är i sin helhet skriven och framtagen utan någon som helst medverkan av AI.</p>
+      </div>
       <div style="margin-top:28px"><a href="#kontakt" class="btn-primary">Köp boken →</a></div>
     </div>
   </div>
@@ -568,7 +548,7 @@
     <div class="story-image-grid">
       <article class="story-card reveal">
         <figure class="story-photo family"><img src="familjenlindh.jpeg" alt="Historiskt familjeporträtt av familjen Lindh" loading="lazy"></figure>
-        <div class="story-copy"><h3>Familjen Lindh</h3><p>Ett familjeporträtt ur berättelsen om Hanna Lindh och människorna kring Pensionat Granparken.</p></div>
+        <div class="story-copy"><h3>Familjen Lindh</h3><p>Människorna kring Hanna och Pensionat Granparken.</p></div>
       </article>
       <article class="story-card story-card--quote reveal">
         <figure class="story-photo flag"><img src="blodocheld.jpeg" alt="Frälsningsarméns fana med orden Blod och eld" loading="lazy"></figure>
@@ -576,7 +556,7 @@
           <h3>Blod och eld</h3>
           <blockquote>
             <p>”Jag har kommit för att tända eld på jorden,<br>och vad jag önskar att den redan var tänd.”</p>
-            <p>Blod och Eld är vår lösen i Striden …<br>Blod och Eld vår gamla lösen gäller än …<br>Med Blod- och Eldfanan i täten<br>går vi fram i det heliga krig …<br>Elddöpta kämpar! Frälsningsarmé!<br>Fram att besegra en värld med blod och med eld …<br>Frälsare god, Frälsare god, döp oss i eld och blod!</p>
+            <p>Blod och eld blev en bild för den rörelse, kampvilja och tro på förändring som också nådde Hanna Lindhs Norrtälje.</p>
           </blockquote>
           <cite>Ur sidan ”Nya världar”</cite>
         </div>
@@ -597,16 +577,14 @@
       <h2 class="section-title">Hanna Lindh — personen bakom</h2>
       <div class="tags"><span>Tidig feminist</span><span>Aktivist</span><span>Entreprenör</span><span>Samhällsbyggare</span></div>
       <div class="hanna-overview">
-        <p class="overview-lead">Hanna Lindh (1839–1916) var en tidig feminist och aktivist som förenade kvinnligt företagande med social förändring.</p>
-        <p>Vintern 1885 förlorade Hanna sin tredje son i sjukdom och drabbades av en livskris som fick henne att tänka radikalt annorlunda. Hon ifrågasatte sin kristna tro och borgerlighetens familjeideal, och började koppla sjukdom till klass och människors livsvillkor.</p>
-        <p>Våren 1886 startade hon Frälsningsarmén i Norrtälje tillsammans med några likasinnade kamrater och började organisera sin omgivning för att förändra samhället. Pensionatet, som hon hade startat för societetsgäster några år tidigare, blev nu en arena för människor med visioner och idéer om en annan livsstil.</p>
-        <p>Hanna satte handling före tro. Klädd i svart uniform med röda detaljer använde hon rösten och kroppen som aktivist på gatan. Sommaren 1888 samarbetade hon med Stockholms Maltkuranstalt för att särskilt hjälpa kvinnor, barn och fattiga familjer. Året därpå samarbetade hon med Karlbergs slott i Stockholm i frågor som rörde försvar och krigsberedskap.</p>
-        <p>Hon ville förena människor med olikartade idéer och formulerade en egen uppfattning om hur ett samhälle borde styras och förstås — som en del av ett större ideologiskt projekt.</p>
-        <p class="overview-significance">Hanna Lindh och Lindhs Pensionat, som i dag heter Pensionat Granparken, är en viktig pusselbit i förståelsen av Frälsningsarméns grundande, kvinnligt företagande och turismens utveckling i Norrtälje omkring förra sekelskiftet.</p>
+        <p class="overview-lead">Hanna Lindh (1839–1916) förenade företagande, omsorg och samhällsförändring.</p>
+        <p>Efter att ha förlorat sin tredje son 1885 började hon se sjukdom, fattigdom och klass som delar av samma verklighet. Våren 1886 var hon med och startade Frälsningsarmén i Norrtälje.</p>
+        <p>Pensionatet blev mer än en plats för sommargäster. Det blev en arena för nya idéer, socialt arbete och en kvinna som satte handling före ord.</p>
+        <p class="overview-significance">Hanna Lindh och Lindhs Pensionat är en viktig pusselbit i berättelsen om kvinnligt företagande, Frälsningsarmén och turismens Norrtälje.</p>
       </div>
-      <p class="ad-intro">Hanna drevs av verklig förändring. Den 15 juni 1888 annonserar hon i <em>Norrtelje Tidning</em>:</p>
+      <p class="ad-intro">Sommaren 1888 annonserade Hanna sin maltkur i <em>Norrtelje Tidning</em>:</p>
       <blockquote class="historical-ad">
-        <p>”Norrtelje Maltkuranstalt, filial af Stockholms Maltkuranstalt, öppnas å Sanatoriet i Granparken, huset n:o 26, måndagen den 18 innevarande juni. Nyberedd varm maltinfusion tillhandahålles den ärade allmänheten dagligen från kl. 9 f.m. till 2 e.m. till drikning på stället eller afhemtning. Enligt å Badhusets och Societetens anslagstaflor äfvensom å anstaltens tillgängliga läkarintyg är maltkuren särdeles verksam vid bleksot, blodbrist och allmän svaghet, vid hotande lungsot, strup-, lung-, mag- och tarmkatarr m.fl. sjukdomar. Priset är pr månad 12 kr, vid hemskickning 15 kr, för barn 10 kr; rabatt fås då familjebiljetter tagas. Närmare underrättelser hafva herr doktorer A. Brandt och Y. Ljungberg benäget åtagit sig att meddela. Norrtälje den 15 juni 1888. /Anstaltens föreståndare.”</p>
+        <p>”Nyberedd varm maltinfusion tillhandahålles den ärade allmänheten dagligen … till drickning på stället eller avhämtning.”</p>
         <cite>Norrtelje Tidning, 15 juni 1888</cite>
       </blockquote>
     </div>
@@ -619,7 +597,7 @@
     <div class="reveal" style="max-width:62ch">
       <p class="kicker">Pensionat Granparken</p>
       <h2 class="section-title">Ett pensionat från 1879–1881</h2>
-      <p class="dek">Pensionat Granparken uppfördes mellan 1879 och 1881 under Norrtäljes storhetstid som kurort. De första gästerna flyttade in 1883. Läget ovanför Societetsparken gjorde pensionatet till en naturlig del av badgästernas liv. Namnet kom från Granparken — den anlagda park där besökare promenerade för hälsans skull.</p>
+      <p class="dek">Pensionat Granparken uppfördes mellan 1879 och 1881. De första gästerna flyttade in 1883, mitt i Norrtäljes utveckling som kurort och sommarstad.</p>
     </div>
 
     <div class="timeline reveal">
@@ -640,13 +618,13 @@
     <div class="reveal" style="max-width:70ch">
       <p class="kicker">Ny forskning</p>
       <h2 class="section-title">När började egentligen historien om Granparken?</h2>
-      <p class="dek">Genom studier av samtida källor, fastighetsuppgifter, familjedokument och Ernst Lindhs memoarer framträder en tydligare historia. <strong style="color:var(--gold-soft)">Hannas hus presenterar ny forskning som pekar på att byggnaden uppfördes mellan 1879 och 1881 och att de första gästerna flyttade in 1883.</strong></p>
+      <p class="dek"><strong style="color:var(--gold-soft)">Ny forskning pekar på att byggnaden uppfördes mellan 1879 och 1881 och att de första gästerna flyttade in 1883.</strong></p>
     </div>
     <div class="claim-cards">
-      <div class="claim reveal"><h4>Byggperiod</h4><span class="big-year">1879–1881</span><p>Åren då Pensionat Granparken uppfördes enligt den nya forskningen.</p></div>
-      <div class="claim reveal"><h4>De första gästerna</h4><span class="big-year">1883</span><p>Året då de första gästerna flyttade in på pensionatet.</p></div>
-      <div class="claim reveal"><h4>Vad är säkert</h4><p>Familjen Lindhs koppling till byggnaden och dess roll i Norrtäljes badortsliv.</p></div>
-      <div class="claim reveal"><h4>Vad är sannolikt</h4><p>Att Granparkens historia kan flyttas flera år tillbaka i tiden — ett faktiskt historiskt bidrag.</p></div>
+      <div class="claim reveal"><h4>Byggperiod</h4><span class="big-year">1879–1881</span></div>
+      <div class="claim reveal"><h4>De första gästerna</h4><span class="big-year">1883</span></div>
+      <div class="claim reveal"><h4>Källor</h4><p>Memoarer, arkiv, fastighetsuppgifter och tidningar.</p></div>
+      <div class="claim reveal"><h4>Betydelse</h4><p>Granparkens historia börjar tidigare än man länge trott.</p></div>
     </div>
   </div>
 </section>
@@ -657,7 +635,7 @@
     <div class="reveal" style="max-width:60ch">
       <p class="kicker">Bildarkiv</p>
       <h2 class="section-title">Bilder ur en bortglömd historia</h2>
-      <p class="dek">Varje bild kan öppnas med en kort berättelse.</p>
+      <p class="dek">Ett visuellt spår genom bokens värld.</p>
     </div>
     <div class="gallery-grid reveal">
       <figure><span class="ph-label">Hanna Lindh</span><figcaption><strong>Hanna Lindh</strong><span>Pensionatets grundare</span></figcaption></figure>
@@ -677,8 +655,8 @@
     <div class="reveal">
       <p class="kicker">Om författaren</p>
       <h2 class="section-title">Fredrik Anthony</h2>
-      <p class="lead-para">Fredrik Anthony är uppvuxen i Norrtälje och har under lång tid arbetat med konst, kulturhistoria och antikviteter.</p>
-      <p style="color:var(--ink-soft)">Genom Ernst Lindhs memoarer och egna efterforskningar har han återupptäckt berättelsen om Hanna Lindh och Pensionat Granparken — den första sammanhållna skildringen av kvinnan bakom huset.</p>
+      <p class="lead-para">Fredrik Anthony är uppvuxen i Norrtälje och arbetar med konst, kulturhistoria och antikviteter.</p>
+      <p style="color:var(--ink-soft)">I <em>Hannas hus</em> återupptäcker han berättelsen om Hanna Lindh och Pensionat Granparken.</p>
     </div>
   </div>
 </section>
@@ -688,47 +666,14 @@
   <div class="wrap reveal">
     <p class="kicker" style="color:var(--gold-soft)">Föredrag</p>
     <h2 class="section-title">Boka ett föredrag</h2>
-    <p class="dek" style="color:rgba(233,241,243,.9); max-width:55ch">Föredrag för bibliotek, föreningar och hembygdssammankomster — om människorna, huset och staden.</p>
+    <p class="dek" style="color:rgba(233,241,243,.9); max-width:55ch">Föredrag för bibliotek, föreningar och hembygdssammankomster.</p>
     <ul class="talk-list">
       <li>Hanna Lindh</li>
       <li>Pensionat Granparken</li>
       <li>Norrtälje som badort</li>
-      <li>Ernst Lindhs memoarer</li>
-      <li>Lokalhistoria och kulturarv</li>
-      <li>Ny forskning om Granparkens tillkomst</li>
+      <li>Ny forskning</li>
     </ul>
     <a href="#kontakt" class="btn-primary" style="background:#fff; color:var(--sea)">Boka föredrag →</a>
-  </div>
-</section>
-
-<!-- ============ PRESS ============ -->
-<section id="press">
-  <div class="wrap">
-    <div class="reveal" style="max-width:60ch">
-      <p class="kicker">Press</p>
-      <h2 class="section-title">I medierna</h2>
-      <p class="dek">Ny forskning kan flytta Granparkens historia flera år tillbaka i tiden.</p>
-    </div>
-    <div class="press-grid reveal">
-      <div class="press-card"><div class="src">Norrtelje Tidning</div><p>Lokal bevakning av boken och forskningen.</p></div>
-      <div class="press-card"><div class="src">Biblioteksevenemang</div><p>Författarsamtal och boksläpp.</p></div>
-      <div class="press-card"><div class="src">Föreningsföredrag</div><p>Hembygds- och kulturföreningar.</p></div>
-      <div class="press-card"><div class="src">Recensioner</div><p>Röster om Hannas hus.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ KEY MESSAGE ============ -->
-<section class="keymsg">
-  <div class="scene2" aria-hidden="true">
-    <svg width="100%" height="100%" viewBox="0 0 1440 400" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-      <path d="M0 240 Q 240 200 480 230 T 960 224 T 1440 236 L1440 400 L0 400Z" fill="#1f5b78" opacity=".5"/>
-      <path d="M0 300 Q 300 270 600 295 T 1200 288 T 1440 300 L1440 400 L0 400Z" fill="#2f7e9b" opacity=".4"/>
-    </svg>
-  </div>
-  <div class="wrap reveal">
-    <p><strong>Hanna Lindh byggde Pensionat Granparken.</strong> Den här boken berättar historien om kvinnan bakom huset — och om Norrtälje under en avgörande period i stadens utveckling.</p>
-    <a href="#kontakt" class="btn-primary">Köp boken →</a>
   </div>
 </section>
 
