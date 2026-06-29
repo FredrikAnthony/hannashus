@@ -208,11 +208,12 @@
   .book-gallery-main img{display:block; width:100%; height:100%; object-fit:cover;}
   .book-gallery figcaption{padding:10px 8px; color:var(--deep); text-align:center; font-size:.72rem; font-weight:500; letter-spacing:.12em; text-transform:uppercase; background:#fff;}
   .book-gallery-thumbs{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px;}
-  .book-gallery-thumbs figure{display:grid; grid-template-rows:auto auto; min-width:0;}
+  .book-gallery-thumbs figure{min-width:0;}
+  .book-gallery-thumbs .book-preview-link{display:grid; grid-template-rows:auto auto; color:inherit; text-decoration:none;}
   .book-gallery-thumbs .book-shot{display:block; position:relative; aspect-ratio:4/3; overflow:hidden; background:#e8e0d2;}
-  .book-gallery-thumbs a.book-shot::after{content:"↗"; position:absolute; right:9px; bottom:9px; display:grid; place-items:center; width:28px; height:28px; border-radius:50%; background:rgba(11,36,54,.78); color:#fff; font-size:.82rem; opacity:0; transform:translateY(4px); transition:opacity .25s ease,transform .25s ease;}
-  .book-gallery-thumbs a.book-shot:hover::after,.book-gallery-thumbs a.book-shot:focus-visible::after{opacity:1; transform:none;}
-  .book-gallery-thumbs a.book-shot:focus-visible{outline:3px solid var(--gold); outline-offset:3px;}
+  .book-gallery-thumbs .book-preview-link .book-shot::after{content:"↗"; position:absolute; right:9px; bottom:9px; display:grid; place-items:center; width:28px; height:28px; border-radius:50%; background:rgba(11,36,54,.78); color:#fff; font-size:.82rem; opacity:0; transform:translateY(4px); transition:opacity .25s ease,transform .25s ease;}
+  .book-gallery-thumbs .book-preview-link:hover .book-shot::after,.book-gallery-thumbs .book-preview-link:focus-visible .book-shot::after{opacity:1; transform:none;}
+  .book-gallery-thumbs .book-preview-link:focus-visible{outline:3px solid var(--gold); outline-offset:3px;}
   .book-gallery-thumbs img{display:block; width:100%; height:100%; object-fit:cover; transition:transform .4s ease;}
   .book-gallery-thumbs figure:hover img{transform:scale(1.055);}
   .book .booklist{list-style:none; columns:2; gap:14px; margin:24px 0 30px;}
@@ -354,9 +355,9 @@
     <div class="reveal book-gallery">
       <figure class="book-gallery-main"><div class="book-shot"><img src="../bokbild1-produkt.jpg" alt="Front cover of the book Hannas hus"></div><figcaption>Hannas hus · Hardcover</figcaption></figure>
       <div class="book-gallery-thumbs">
-        <figure><a class="book-shot" href="../bokbild2-produkt.jpg" target="_blank" rel="noopener" aria-label="Open the book’s back cover at full size"><img src="../bokbild2-produkt.jpg" alt="Back cover of the book Hannas hus"></a><figcaption>Back cover</figcaption></figure>
-        <figure><a class="book-shot" href="../bokbild3-produkt.jpg" target="_blank" rel="noopener" aria-label="Open the book’s photo spread at full size"><img src="../bokbild3-produkt.jpg" alt="A photographic spread from the book Hannas hus"></a><figcaption>Photo spread</figcaption></figure>
-        <figure><a class="book-shot" href="../bokbild4-produkt.jpg" target="_blank" rel="noopener" aria-label="Open the book’s inside pages at full size"><img src="../bokbild4-produkt.jpg" alt="A text spread from the book Hannas hus"></a><figcaption>Inside pages</figcaption></figure>
+        <figure><a class="book-preview-link" href="../bokbild2-produkt.jpg" target="_blank" rel="noopener" aria-label="Open the book’s back cover at full size"><span class="book-shot"><img src="../bokbild2-produkt.jpg" alt="Back cover of the book Hannas hus"></span><figcaption>Back cover</figcaption></a></figure>
+        <figure><a class="book-preview-link" href="../bokbild3-produkt.jpg" target="_blank" rel="noopener" aria-label="Open the book’s photo spread at full size"><span class="book-shot"><img src="../bokbild3-produkt.jpg" alt="A photographic spread from the book Hannas hus"></span><figcaption>Photo spread</figcaption></a></figure>
+        <figure><a class="book-preview-link" href="../bokbild4-produkt.jpg" target="_blank" rel="noopener" aria-label="Open the book’s inside pages at full size"><span class="book-shot"><img src="../bokbild4-produkt.jpg" alt="A text spread from the book Hannas hus"></span><figcaption>Inside pages</figcaption></a></figure>
       </div>
     </div>
     <div class="reveal">
