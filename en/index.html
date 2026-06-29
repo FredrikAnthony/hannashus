@@ -51,7 +51,7 @@
     -webkit-font-smoothing:antialiased;
     overflow-x:hidden;
   }
-  h1,h2,h3,h4{font-family:var(--display); font-weight:400; font-synthesis:none; line-height:1.2; letter-spacing:.025em; text-rendering:optimizeLegibility;}
+  h1,h2,h3,h4{font-family:var(--display); font-weight:400; font-synthesis:none; line-height:1.2; letter-spacing:.025em; word-spacing:-1px; text-rendering:optimizeLegibility;}
   a{color:inherit; text-decoration:none;}
   img{max-width:100%; display:block;}
   .wrap{max-width:var(--maxw); margin:0 auto; padding-inline:var(--gut);}
@@ -159,6 +159,7 @@
   .btn-primary:hover{transform:translateY(-2px); box-shadow:0 20px 40px -12px rgba(200,162,74,.8);}
   .btn-ghost{border:1.5px solid rgba(255,255,255,.5); color:#fff;}
   .btn-ghost:hover{background:rgba(255,255,255,.12); border-color:#fff;}
+  .section-cta{text-align:center; margin-top:36px;}
   .scroll-hint{
     position:absolute; bottom:26px; left:50%; transform:translateX(-50%); z-index:2;
     color:rgba(255,255,255,.7); font-size:.72rem; letter-spacing:.25em; text-transform:uppercase;
@@ -208,7 +209,10 @@
   .book-gallery figcaption{padding:10px 8px; color:var(--deep); text-align:center; font-size:.72rem; font-weight:500; letter-spacing:.12em; text-transform:uppercase; background:#fff;}
   .book-gallery-thumbs{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px;}
   .book-gallery-thumbs figure{display:grid; grid-template-rows:auto auto; min-width:0;}
-  .book-gallery-thumbs .book-shot{aspect-ratio:4/3; overflow:hidden; background:#e8e0d2;}
+  .book-gallery-thumbs .book-shot{display:block; position:relative; aspect-ratio:4/3; overflow:hidden; background:#e8e0d2;}
+  .book-gallery-thumbs a.book-shot::after{content:"↗"; position:absolute; right:9px; bottom:9px; display:grid; place-items:center; width:28px; height:28px; border-radius:50%; background:rgba(11,36,54,.78); color:#fff; font-size:.82rem; opacity:0; transform:translateY(4px); transition:opacity .25s ease,transform .25s ease;}
+  .book-gallery-thumbs a.book-shot:hover::after,.book-gallery-thumbs a.book-shot:focus-visible::after{opacity:1; transform:none;}
+  .book-gallery-thumbs a.book-shot:focus-visible{outline:3px solid var(--gold); outline-offset:3px;}
   .book-gallery-thumbs img{display:block; width:100%; height:100%; object-fit:cover; transition:transform .4s ease;}
   .book-gallery-thumbs figure:hover img{transform:scale(1.055);}
   .book .booklist{list-style:none; columns:2; gap:14px; margin:24px 0 30px;}
@@ -248,8 +252,9 @@
   .tl-item p{font-size:.92rem; color:var(--ink-soft); margin-top:6px;}
 
   .author{background:linear-gradient(180deg,var(--foam),var(--paper));}
-  .author-photo{aspect-ratio:1; border-radius:50%; max-width:300px; margin-inline:auto; background:linear-gradient(160deg,#cfe1e6,#9bbfc9); box-shadow:0 24px 50px -24px rgba(18,40,53,.5); position:relative; overflow:hidden;}
-  .author-photo img{width:100%; height:100%; object-fit:cover; object-position:58% 38%; display:block;}
+  .author-photo{aspect-ratio:4/5; border-radius:8px; max-width:320px; margin-inline:auto; background:linear-gradient(160deg,#cfe1e6,#9bbfc9); box-shadow:0 24px 50px -24px rgba(18,40,53,.5); position:relative; overflow:hidden;}
+  .author-photo img{width:100%; height:100%; object-fit:cover; object-position:center 38%; display:block;}
+  .author-photo figcaption{position:absolute; left:0; right:0; bottom:0; padding:30px 18px 14px; background:linear-gradient(transparent,rgba(11,17,83,.82)); color:#fff; font-size:.78rem; letter-spacing:.06em;}
 
   footer.site{background:#081d2c; color:var(--mist); padding-block:70px 40px;}
   .foot-grid{display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:40px;}
@@ -349,9 +354,9 @@
     <div class="reveal book-gallery">
       <figure class="book-gallery-main"><div class="book-shot"><img src="../bokbild1-produkt.jpg" alt="Front cover of the book Hannas hus"></div><figcaption>Hannas hus · Hardcover</figcaption></figure>
       <div class="book-gallery-thumbs">
-        <figure><div class="book-shot"><img src="../bokbild2-produkt.jpg" alt="Back cover of the book Hannas hus"></div><figcaption>Back cover</figcaption></figure>
-        <figure><div class="book-shot"><img src="../bokbild3-produkt.jpg" alt="A photographic spread from the book Hannas hus"></div><figcaption>Photo spread</figcaption></figure>
-        <figure><div class="book-shot"><img src="../bokbild4-produkt.jpg" alt="A text spread from the book Hannas hus"></div><figcaption>Inside pages</figcaption></figure>
+        <figure><a class="book-shot" href="../bokbild2-produkt.jpg" target="_blank" rel="noopener" aria-label="Open the book’s back cover at full size"><img src="../bokbild2-produkt.jpg" alt="Back cover of the book Hannas hus"></a><figcaption>Back cover</figcaption></figure>
+        <figure><a class="book-shot" href="../bokbild3-produkt.jpg" target="_blank" rel="noopener" aria-label="Open the book’s photo spread at full size"><img src="../bokbild3-produkt.jpg" alt="A photographic spread from the book Hannas hus"></a><figcaption>Photo spread</figcaption></figure>
+        <figure><a class="book-shot" href="../bokbild4-produkt.jpg" target="_blank" rel="noopener" aria-label="Open the book’s inside pages at full size"><img src="../bokbild4-produkt.jpg" alt="A text spread from the book Hannas hus"></a><figcaption>Inside pages</figcaption></figure>
       </div>
     </div>
     <div class="reveal">
@@ -396,6 +401,7 @@
       </ol>
     </aside>
   </div>
+  <div class="wrap section-cta reveal"><a href="https://buy.stripe.com/8x2aEQaVd5Ci9iGaca9oc00?locale=en" class="btn-primary" target="_blank" rel="noopener">Buy the book →</a></div>
 </section>
 
 <!-- ============ HANNA ============ -->
@@ -440,18 +446,20 @@
         <div class="tl-item hl"><span class="dot"></span><span class="yr">Today</span><p>The house lives on as Pensionat Granparken.</p></div>
       </div>
     </div>
+    <div class="section-cta reveal"><a href="https://buy.stripe.com/8x2aEQaVd5Ci9iGaca9oc00?locale=en" class="btn-primary" target="_blank" rel="noopener">Buy the book →</a></div>
   </div>
 </section>
 
 <!-- ============ AUTHOR ============ -->
 <section class="author" id="forfattare">
   <div class="wrap grid2">
-    <div class="author-photo reveal"><img src="../assets/fredrik-anthony.png" alt="Fredrik Anthony holding the book Hannas hus"></div>
+    <figure class="author-photo reveal"><img src="../assets/fredrik-anthony-felix-berg.png" alt="Portrait of Fredrik Anthony"><figcaption>Photo: Felix Berg</figcaption></figure>
     <div class="reveal">
       <p class="kicker">About the author</p>
       <h2 class="section-title">Fredrik Anthony</h2>
-      <p class="lead-para">Fredrik Anthony grew up in Norrtälje and works with art, cultural history and antiques.</p>
-      <p style="color:var(--ink-soft)">In <em>Hanna's House</em>, he rediscovers the story of Hanna Lindh and Pensionat Granparken.</p>
+      <p class="lead-para">Fredrik Anthony is an economist and art historian who grew up in Norrtälje.</p>
+      <p style="color:var(--ink-soft)">For the past twenty years, he has worked with the valuation of art and antiques.</p>
+      <p style="color:var(--ink-soft); margin-top:16px">His previous publications include <em>Nearly A Pyramide</em> (2017), <em>Not Street Art</em> (2016), <em>En akademisk homerun</em> (2013) and <em>Amphion</em> (Swedish National Maritime Museum, 2007), among others.</p>
     </div>
   </div>
 </section>
